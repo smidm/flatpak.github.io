@@ -549,13 +549,13 @@
   
   <p>Each application must be built against a runtime, and this runtime must be installed on a host system in order for the application to run. Users can install multiple different runtimes at the same time, including different versions of the same runtime.</p>
   
-  <p>Flatpak identifies runtimes (as well as SDKs and applications) by a triple of name/arch/branch. The name is expected to be in inverse-dns notation, which needs to match the D-Bus name used for the application. For example: &#39;<code>org.gnome.Sdk/x86_64/3.14</code>&#39; or &#39;<code>org.gnome.Builder/i686/master</code>&#39;.</p>
+  <p>Flatpak identifies runtimes (as well as SDKs and applications) by a triple of name/arch/branch. The name is expected to be in inverse-dns notation, which needs to match the D-Bus name used for the application. For example: &#39;<code>org.gnome.Sdk/x86_64/3.14</code>&#39; or &#39;<code>org.gnome.Builder/i386/master</code>&#39;.</p>
   
   <h3>Bundled Libraries<a id="bundledlibraries"></a></h3>
   
   <p>If an application requires any dependencies that aren&#39;t in its runtime, they can be bundled along with the application itself. This allows apps to use dependencies that aren&#39;t available in a distribution, or to use a different version of a dependency from the one that&#39;s installed on the host.</p>
   
-  <p>Both runtimes and bundled libraries can be installed per-user and system-wide.</p>
+  <p>Both runtimes and app bundles can be installed per-user and system-wide.</p>
   
   <h3>SDKs (Software Developer Kits)<a id="sdks"></a></h3>
   
@@ -657,9 +657,9 @@
   
   <p>At this point you have successfully built a flatpak and prepared it to be run. To test the app, you need to export the Dictionary to a repository, add that repository and then install and run the app:</p>
   
-  <pre><code>$ flatpak build-export repo dictionary&#x000A;$ flatpak remote-add --no-gpg-verify --if-not-exists tutorial-repo repo&#x000A;$ flatpak install tutorial-repo org.gnome.Dictionary&#x000A;$ flatpak run org.gnome.Dictionary&#x000A;</code></pre>
+  <pre><code>$ flatpak build-export repo dictionary&#x000A;$ flatpak --user remote-add --no-gpg-verify --if-not-exists tutorial-repo repo&#x000A;$ flatpak --user install tutorial-repo org.gnome.Dictionary&#x000A;$ flatpak run org.gnome.Dictionary&#x000A;</code></pre>
   
-  <p>This exports the app, creates a repository called tutorial-repo, installs the Dictionary application and runs it.</p>
+  <p>This exports the app, creates a repository called tutorial-repo, installs the Dictionary application in the per-user installation area and runs it.</p>
   
   <h2>Building More Complex Apps With flatpak-builder</h2>
   
@@ -711,7 +711,7 @@
   
   <p>It is now possible to update the installed version of the Dictionary application with the new version that was built and exported by flatpak-builder:</p>
   
-  <pre><code>$ flatpak update org.gnome.Dictionary&#x000A;</code></pre>
+  <pre><code>$ flatpak --user update org.gnome.Dictionary&#x000A;</code></pre>
   
   <p>To check that the application has been successfully updated, you can compare the sha256 commit of the installed app with the commit ID that was printed by flatpak-builder:</p>
   

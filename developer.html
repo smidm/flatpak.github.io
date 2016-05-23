@@ -760,7 +760,7 @@
   
   <p>flatpak run can also be used to permanently override an application&#39;s permissions:</p>
   
-  <pre><code>$ flatpak override --filesystem=home org.gnome.Dictionary&#x000A;$ flatpak run --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
+  <pre><code>$ flatpak --user override --filesystem=home org.gnome.Dictionary&#x000A;$ flatpak run --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
   
   <p>It is also possible to remove permissions using the same method. You can use the following command to see what happens when access to the filesystem is removed, for example:</p>
   
@@ -832,7 +832,7 @@
   
   <p>As already described, flatpak uses the AppData standard to store user visible information about applications. This information needs to be accessible to clients in order to be displayed in app stores. To do this, build-update-repo scans all the branches in the repository for AppData data, which is collected and committed into a repository-wide AppStream branch. flatpak then keeps a local copy of this branch for each remote, which can be manually updated using the update command. For example:</p>
   
-  <pre><code>$ flatpak update --appstream nightly&#x000A;</code></pre>
+  <pre><code>$ flatpak update --appstream gnome&#x000A;</code></pre>
   
   <h3>Hosting a repository</h3>
   
@@ -844,7 +844,8 @@
   
   <h3>GPG signatures</h3>
   
-  <p>By default OSTree refuses to pull from a remote repository that is not signed. To disable GPG verification, the <code>--no-gpg-verify</code> option needs to be used when a remote is added. Alternatively, it can be disabled on an existing remote using flatpak remote-modify.</p>
+  <p>By default OSTree refuses to pull from a remote repository that is not signed. To disable GPG verification, the <code>--no-gpg-verify</code> option needs to be used when a remote is added. Alternatively, it can be disabled on an existing remote using flatpak remote-modify.
+  Note that gpg signatures are required for the user to be able to install trusted remotes that can be updated from without needing to be root.</p>
   
   <p>OSTree requires signatures for every commit and on repository summary files. These objects are created by the build-update-repo and build-export commands, as well as indirectly by flatpak-builder. A GPG key should therefore be passed to each of these commands, and optionally the gpg home directory to use. For example:</p>
   

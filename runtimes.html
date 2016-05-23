@@ -55,13 +55,13 @@
   <section class=""><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1">
   <h1>Runtimes</h1>
   
-  <p>This page lists the runtimes that are currently available for xdg-app.</p>
+  <p>This page lists the runtimes that are currently available for flatpak.</p>
   
   <h2>Stable Runtimes</h2>
   
   <p>Stable runtimes are currently available in Freedesktop and GNOME flavours. These are hosted at <a href="https://sdk.gnome.org/repo/">https://sdk.gnome.org/repo/</a> and signed with the key at <a href="https://sdk.gnome.org/keys/gnome-sdk.gpg">https://sdk.gnome.org/keys/gnome-sdk.gpg</a>. The repository can be added with:</p>
   
-  <pre><code>$ xdg-app remote-add --user --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/&#x000A;</code></pre>
+  <pre><code>$ flatpak remote-add --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/&#x000A;</code></pre>
   
   <p>GNOME runtimes are released with each major release and contain the main GNOME platform libraries. They are based on the official freedesktop.org runtime. At the moment they only receive minor bug fixing and security updates, but should be considered ABI stable and frozen.</p>
   
@@ -87,6 +87,11 @@
       <td>3.16, 3.18, 3.20</td>
     </tr>
     <tr>
+      <td>org.gnome.Sdk.Locale</td>
+      <td>Locale info addin for org.gnome.Sdk</td>
+      <td>3.20</td>
+    </tr>
+    <tr>
       <td>org.gnome.Sdk.Debug</td>
       <td>Debug info addin for org.gnome.Sdk</td>
       <td>3.20</td>
@@ -109,11 +114,21 @@
     <tr>
       <td>org.freedesktop.Sdk.Locale</td>
       <td>Locale addins for org.freedesktop.Sdk</td>
-      <td>1.0, 1.2, 1.4</td>
+      <td>1.4</td>
     </tr>
     <tr>
       <td>org.freedesktop.Sdk.Debug</td>
       <td>Debug info Addin for org.freedesktop.Sdk</td>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.BasePlatform</td>
+      <td>Yocto based core for org.freedesktop.Platform</td>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.BaseSdk</td>
+      <td>Yocto based core for org.freedesktop.Sdk</td>
       <td>1.4</td>
     </tr>
   </table>
@@ -124,7 +139,7 @@
   
   <p>The nightly repository is available at <a href="https://sdk.gnome.org/nightly/repo/">https://sdk.gnome.org/nightly/repo/</a>. All releases are manually signed with the key at <a href="https://sdk.gnome.org/nightly/keys/nightly.gpg">https://sdk.gnome.org/nightly/keys/nightly.gpg</a>. This repository can be added with</p>
   
-  <pre><code>$ xdg-app --user remote-add --gpg-key=nightly.gpg gnome-nightly https://sdk.gnome.org/nightly/repo/&#x000A;</code></pre>
+  <pre><code>$ flatpak remote-add --gpg-import=nightly.gpg gnome-nightly https://sdk.gnome.org/nightly/repo/&#x000A;</code></pre>
   
   <h3>Available nightly runtimes</h3>
   
@@ -157,60 +172,25 @@
       <td>Debug info addin for org.gnome.Sdk</td>
       <td>master</td>
     </tr>
-    <tr>
-      <td>org.freedesktop.Platform</td>
-      <td>Smaller runtime with basic platform including X11, Wayland, Mesa, D-Bus, SDL, etc. Used as a base for org.gnome.Platform and other runtimes.</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Platform.Locale</td>
-      <td>Addins to org.gnome.Platform that adds locale data and translations</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Sdk</td>
-      <td>The development runtime used by org.freedesktop.Platform</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Sdk.Locale</td>
-      <td>Locale addins for org.freedesktop.Sdk</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.Sdk.Debug</td>
-      <td>Debug info Addin for org.freedesktop.Sdk</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.BasePlatform</td>
-      <td>Yocto based core for org.freedesktop.Platform</td>
-      <td>master</td>
-    </tr>
-    <tr>
-      <td>org.freedesktop.BaseSdk</td>
-      <td>Yocto based core for org.freedesktop.Sdk</td>
-      <td>master</td>
-    </tr>
   </table>
   
   <p>Additionally there is a repo with nightly builds of some GNOME applications, which can be listed with:</p>
   
-  <pre><code>$ xdg-app --user remote-add --gpg-key=nightly.gpg gnome-nightly-apps https://sdk.gnome.org/nightly/repo-apps/&#x000A;$ xdg-app --user remote-ls gnome-nightly-apps --app&#x000A;</code></pre>
+  <pre><code>$ flatpak remote-add --gpg-import=nightly.gpg gnome-nightly-apps https://sdk.gnome.org/nightly/repo-apps/&#x000A;$ flatpak remote-ls gnome-nightly-apps --app&#x000A;</code></pre>
   
   <p>This includes the following apps:</p>
   
-  <pre><code>org.gnome.Builder&#x000A;org.gnome.Calculator&#x000A;org.gnome.Calendar&#x000A;org.gnome.Characters&#x000A;org.gnome.Dictionary&#x000A;org.gnome.Documents&#x000A;org.gnome.Epiphany&#x000A;org.gnome.Evince&#x000A;org.gnome.Games&#x000A;org.gnome.Maps&#x000A;org.gnome.News&#x000A;org.gnome.Polari&#x000A;org.gnome.Software.XdgApp&#x000A;org.gnome.Todo&#x000A;org.gnome.Weather&#x000A;org.gnome.bijiben&#x000A;org.gnome.clocks&#x000A;org.gnome.eog&#x000A;org.gnome.gedit&#x000A;org.gnome.iagno&#x000A;</code></pre>
+  <pre><code>org.gnome.Builder&#x000A;org.gnome.Calculator&#x000A;org.gnome.Calendar&#x000A;org.gnome.Characters&#x000A;org.gnome.Dictionary&#x000A;org.gnome.Documents&#x000A;org.gnome.Epiphany&#x000A;org.gnome.Evince&#x000A;org.gnome.Games&#x000A;org.gnome.Gitg&#x000A;org.gnome.Glade&#x000A;org.gnome.Maps&#x000A;org.gnome.News&#x000A;org.gnome.Polari&#x000A;org.gnome.Rhythmbox&#x000A;org.gnome.Software.XdgApp&#x000A;org.gnome.Todo&#x000A;org.gnome.Totem&#x000A;org.gnome.Weather&#x000A;org.gnome.bijiben&#x000A;org.gnome.clocks&#x000A;org.gnome.eog&#x000A;org.gnome.gedit&#x000A;org.gnome.iagno&#x000A;</code></pre>
   
-  <p>Of particular interest is org.gnome.Software.XdgApp, which lets you browse and install xdg-app with a graphical tool.</p>
+  <p>Of particular interest is org.gnome.Software.XdgApp, which lets you browse and install flatpak apps with a graphical tool.</p>
   
   <p>All these apps are using a version name of &quot;master&quot;. For example, to install gedit run:</p>
   
-  <pre><code>$ xdg-app --user install gnome-nightly-apps org.gnome.gedit master&#x000A;</code></pre>
+  <pre><code>$ flatpak install gnome-nightly-apps org.gnome.gedit master&#x000A;</code></pre>
   
   <p>And to update it:</p>
   
-  <pre><code>$ xdg-app --user update org.gnome.gedit master&#x000A;</code></pre>
+  <pre><code>$ flatpak update org.gnome.gedit master&#x000A;</code></pre>
   </div></div></div></section>
   <section class='bg-black' id='footer'>
     <div class='container'>

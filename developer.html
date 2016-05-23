@@ -563,11 +563,11 @@
   
   <h3>Sandboxes<a id="sandboxes"></a></h3>
   
-  <p>With Flatpak, each app is built and run in an isolated environment. By default, the application can only &#39;see&#39; itself and its runtime. Access to user files, network, graphics sockets, subsystems on the bus and devices all has to be explicitly granted. (As will be described later, Flatpak provides several ways to do this.) Access to other things, such as other processes, is (deliberately) not possible.</p>
+  <p>With Flatpak, each app is built and run in an isolated environment. By default, the application can only &#39;see&#39; itself and its runtime. Access to user files, network, graphics sockets, subsystems on the bus and devices have to be explicitly granted. (As will be described later, Flatpak provides several ways to do this.) Access to other things, such as other processes, is (deliberately) not possible.</p>
   
   <h2>The flatpak Command</h2>
   
-  <p><code>flatpak</code> is the tool that is used install, remove and update runtimes and applications. It can also be used to view what is currently installed, and has commands for building and distributing application bundles. <code>flatpak --help</code> provides a full list of available commands.</p>
+  <p><code>flatpak</code> is the tool that is used to install, remove and update runtimes and applications. It can also be used to view what is currently installed, and has commands for building and distributing application bundles. <code>flatpak --help</code> provides a full list of available commands.</p>
   
   <h2>Anatomy of a Flatpak App</h2>
   
@@ -593,17 +593,17 @@
   
   <h3>Installing an SDK</h3>
   
-  <p>As described above, an SDK is a special type of runtime that is used to build applcations. Typically, an SDK is paired with a runtime that will be used by the app at runtime. The GNOME 3.20 SDK is used to build applications that use the GNOME 3.20 runtime, for example. The rest of this guide uses this SDK and runtime for its examples. To do this, download the repository GPG key and then add the repository that contains the runtime and SDK:</p>
+  <p>As described above, an SDK is a special type of runtime that is used to build applcations. Typically, an SDK is paired with a runtime that will be used by the app at runtime. For example the GNOME 3.20 SDK is used to build applications that use the GNOME 3.20 runtime. The rest of this guide uses this SDK and runtime for its examples. To do this, download the repository GPG key and then add the repository that contains the runtime and SDK:</p>
   
-  <pre><code>$ wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;$ flatpak remote-add --user --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/&#x000A;</code></pre>
+  <pre><code>$ wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;$ flatpak remote-add --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/&#x000A;</code></pre>
   
-  <p>You can now download and install the runtime and SDK. (If you have already completed the tutorial on the Flatpak homepage, you will already have the runtime installed.)</p>
+  <p>You can now download and install the runtime and SDK. (If you have already completed the tutorial on the Flatpak homepage, you will already have the runtime installed)</p>
   
-  <pre><code>$ flatpak --user install gnome org.gnome.Platform 3.20&#x000A;$ flatpak --user install gnome org.gnome.Sdk 3.20&#x000A;</code></pre>
+  <pre><code>$ flatpak install gnome org.gnome.Platform 3.20&#x000A;$ flatpak install gnome org.gnome.Sdk 3.20&#x000A;</code></pre>
   
   <p>This might be a good time to try installing an application and having a look &#39;under the hood&#39;. To do this, you need to add a repository that contains applications. In this case we are going to use the gnome-apps repository and install gedit:</p>
   
-  <pre><code>$ flatpak --user remote-add --gpg-key=gnome-sdk.gpg gnome-apps https://sdk.gnome.org/repo-apps/&#x000A;$ flatpak --user install gnome-apps org.gnome.gedit stable&#x000A;</code></pre>
+  <pre><code>$ flatpak remote-add --gpg-import=gnome-sdk.gpg gnome-apps https://sdk.gnome.org/repo-apps/&#x000A;$ flatpak install gnome-apps org.gnome.gedit stable&#x000A;</code></pre>
   
   <p>You can now use the following command to get a shell in the &#39;devel sandbox&#39;:</p>
   
@@ -657,7 +657,7 @@
   
   <p>At this point you have successfully built a flatpak and prepared it to be run. To test the app, you need to export the Dictionary to a repository, add that repository and then install and run the app:</p>
   
-  <pre><code>$ flatpak build-export repo dictionary&#x000A;$ flatpak --user remote-add --no-gpg-verify --if-not-exists tutorial-repo repo&#x000A;$ flatpak --user install tutorial-repo org.gnome.Dictionary&#x000A;$ flatpak run org.gnome.Dictionary&#x000A;</code></pre>
+  <pre><code>$ flatpak build-export repo dictionary&#x000A;$ flatpak remote-add --no-gpg-verify --if-not-exists tutorial-repo repo&#x000A;$ flatpak install tutorial-repo org.gnome.Dictionary&#x000A;$ flatpak run org.gnome.Dictionary&#x000A;</code></pre>
   
   <p>This exports the app, creates a repository called tutorial-repo, installs the Dictionary application and runs it.</p>
   
@@ -679,7 +679,7 @@
   
   <p>flatpak-builder performs a cleanup phase after the build, which can be used to remove headers and development docs, among other things. Two properties in the manifest file can be used for this. First, a list of filename patterns can be included:</p>
   
-  <pre><code>cleanup&quot;: [ &quot;/include&quot;, &quot;/bin/foo-*&quot;, &quot;*.a&quot; ]&#x000A;</code></pre>
+  <pre><code>&quot;cleanup&quot;: [ &quot;/include&quot;, &quot;/bin/foo-*&quot;, &quot;*.a&quot; ]&#x000A;</code></pre>
   
   <p>The second cleanup property is a list of commands that are run during the cleanup phase:</p>
   
@@ -711,11 +711,11 @@
   
   <p>It is now possible to update the installed version of the Dictionary application with the new version that was built and exported by flatpak-builder:</p>
   
-  <pre><code>$ flatpak --user update org.gnome.Dictionary&#x000A;</code></pre>
+  <pre><code>$ flatpak update org.gnome.Dictionary&#x000A;</code></pre>
   
   <p>To check that the application has been successfully updated, you can compare the sha256 commit of the installed app with the commit ID that was printed by flatpak-builder:</p>
   
-  <pre><code>$ flatpak --user info org.gnome.Dictionary&#x000A;</code></pre>
+  <pre><code>$ flatpak info org.gnome.Dictionary&#x000A;</code></pre>
   
   <p>And finally, you can run the new version of the Dictionary app:</p>
   
@@ -760,7 +760,7 @@
   
   <p>flatpak run can also be used to permanently override an application&#39;s permissions:</p>
   
-  <pre><code>$ flatpak --user override --filesystem=home org.gnome.Dictionary&#x000A;$ flatpak run --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
+  <pre><code>$ flatpak override --filesystem=home org.gnome.Dictionary&#x000A;$ flatpak run --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
   
   <p>It is also possible to remove permissions using the same method. You can use the following command to see what happens when access to the filesystem is removed, for example:</p>
   
@@ -788,11 +788,11 @@
   
   <pre><code>--socket=wayland&#x000A;</code></pre>
   
-  <p>Allow the application play sounds using PulseAudio:</p>
+  <p>Allow the application to play sounds using PulseAudio:</p>
   
   <pre><code>--socket=pulseaudio&#x000A;</code></pre>
   
-  <p>Allow the application access the network:</p>
+  <p>Allow the application to access the network:</p>
   
   <pre><code>--share=network&#x000A;</code></pre>
   
@@ -812,8 +812,7 @@
   
   <h2>Distributing Applications</h2>
   
-  <p>As has already been seen, flatpak installs runtimes and apps from repositories. To do this, it uses <a href="https://ostree.readthedocs.io/en/latest/">OSTree</a>
-  . This is similar to Git, but has been designed to handle trees of large binaries. Like Git, it has the concept of repositories and commits. Applications are stored as branches.</p>
+  <p>As has already been seen, flatpak installs runtimes and apps from repositories. To do this, it uses <a href="https://ostree.readthedocs.io/en/latest/">OSTree</a>. This is similar to Git, but has been designed to handle trees of large binaries. Like Git, it has the concept of repositories and commits. Applications are stored as branches.</p>
   
   <p>To distribute an application, it must be exported to a repository. This is done using the build-export command:</p>
   
@@ -831,9 +830,9 @@
   
   <h3>AppData</h3>
   
-  <p>As already described, flatpak uses the AppData standard to store user visible information about applications. This information needs to be accessible to clients in order to be displayed in app stores. To do this, build-update-repo scans all the branches in the repository for AppData data, which is collected and committed into a repository-wide AppStream branch. flatpak then keeps a local copy of this branch for each remote, which can manually updated using the update command. For example:</p>
+  <p>As already described, flatpak uses the AppData standard to store user visible information about applications. This information needs to be accessible to clients in order to be displayed in app stores. To do this, build-update-repo scans all the branches in the repository for AppData data, which is collected and committed into a repository-wide AppStream branch. flatpak then keeps a local copy of this branch for each remote, which can be manually updated using the update command. For example:</p>
   
-  <pre><code>$ flatpak --user update --appstream nightly&#x000A;</code></pre>
+  <pre><code>$ flatpak update --appstream nightly&#x000A;</code></pre>
   
   <h3>Hosting a repository</h3>
   

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flatpak</title>
+    <meta content='text/html; charset=UTF8' http-equiv='content-type'>
+    <meta content='fixme' name='description'>
+    <meta content='fixme' name='keywords'>
+    <meta content='width=device-width,initial-scale=1' name='viewport'>
+    <link href='img/favicon.png' rel='icon' type='image/png'>
+    <link href='favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='img/favicon57.png' rel='apple-touch-icon' sizes='57x57'>
+    <link href='img/favicon152.png' rel='apple-touch-icon' sizes='152x152'>
+    <link href="stylesheets/fonts.css" rel="stylesheet" />
+    <link href="stylesheets/site.css" rel="stylesheet" />
+    <link href="stylesheets/animate.css" rel="stylesheet" />
+    <!-- = stylesheet_link_tag "http://overpass-30e2.kxcdn.com/overpass.css" -->
+  </head>
+  <body id='page-top'>
+    <nav class='navbar navbar-default navbar-fixed-top' id='mainNav'>
+      <div class='container-fluid'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+          <button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="./">Flatpak</a>
+        </div>
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a href='index.html#about'>About</a>
+            </li>
+            <li>
+              <a href='index.html#users'>Users</a>
+            </li>
+            <li>
+              <a href='index.html#developers'>Developers</a>
+            </li>
+            <li>
+              <a href='index.html#get-involved'>Get&nbsp;Involved</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="faq.html">FAQ</a>
+            </li>
+          </ul>
+          <!-- /.navbar-collapse -->
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </body>
+  <section class=""><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1">
+  <h1>Runtimes</h1>
+  
+  <p>This page lists the runtimes that are currently available for xdg-app.</p>
+  
+  <h2>Stable Runtimes</h2>
+  
+  <p>Stable runtimes are currently available in Freedesktop and GNOME flavours. These are hosted at <a href="https://sdk.gnome.org/repo/">https://sdk.gnome.org/repo/</a> and signed with the key at <a href="https://sdk.gnome.org/keys/gnome-sdk.gpg">https://sdk.gnome.org/keys/gnome-sdk.gpg</a>. The repository can be added with:</p>
+  
+  <pre><code>$ xdg-app remote-add --user --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/&#x000A;</code></pre>
+  
+  <p>GNOME runtimes are released with each major release and contain the main GNOME platform libraries. They are based on the official freedesktop.org runtime. At the moment they only receive minor bug fixing and security updates, but should be considered ABI stable and frozen.</p>
+  
+  <h3>Available stable runtimes</h3>
+  
+  <table class="full"><!-- fixme make into markdown tables -->
+    <tr>
+      <th>Name</th><th>Description</th><th class="nowrap">Versions</th>
+    </tr>
+    <tr>
+      <td>org.gnome.Platform</td>
+      <td>The standard Gnome runtime used by most gnome apps</td>
+      <td>3.16, 3.18, 3.20</td>
+    </tr>
+    <tr>
+      <td>org.gnome.Platform.Locale</td>
+      <td>Addins to org.gnome.Platform that adds locale data and translations</td>
+      <td>3.20</td>
+    </tr>
+    <tr>
+      <td>org.gnome.Sdk</td>
+      <td>The development runtime used to build apps, and required by apps like gnome-builder</td>
+      <td>3.16, 3.18, 3.20</td>
+    </tr>
+    <tr>
+      <td>org.gnome.Sdk.Debug</td>
+      <td>Debug info addin for org.gnome.Sdk</td>
+      <td>3.20</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Platform</td>
+      <td>Smaller runtime with basic platform including X11, wayland, mesa, dbus, SDL, etc. Used as a base for org.gnome.Platform and other runtimes.</td>
+      <td>1.0, 1.2, 1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Platform.Locale</td>
+      <td>Addins to org.gnome.Platform that adds locale data and translations</td>
+      <td>1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Sdk</td>
+      <td>The development runtime used by org.freedesktop.Platform</td>
+      <td>1.0, 1.2, 1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Sdk.Locale</td>
+      <td>Locale addins for org.freedesktop.Sdk</td>
+      <td>1.0, 1.2, 1.4</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Sdk.Debug</td>
+      <td>Debug info Addin for org.freedesktop.Sdk</td>
+      <td>1.4</td>
+    </tr>
+  </table>
+  
+  <h2>Nightly Runtimes</h2>
+  
+  <p>Regular nightly builds are available of the latest GNOME and Freedesktop runtimes from Git. These are not stable and have no guarantees on ABI stability or if they even work. However, they are a useful way to test the latest version that is in development. The same repository also contains a few applications built against this runtime allowing you to test it.</p>
+  
+  <p>The nightly repository is available at <a href="https://sdk.gnome.org/nightly/repo/">https://sdk.gnome.org/nightly/repo/</a>. All releases are manually signed with the key at <a href="https://sdk.gnome.org/nightly/keys/nightly.gpg">https://sdk.gnome.org/nightly/keys/nightly.gpg</a>. This repository can be added with</p>
+  
+  <pre><code>$ xdg-app --user remote-add --gpg-key=nightly.gpg gnome-nightly https://sdk.gnome.org/nightly/repo/&#x000A;</code></pre>
+  
+  <h3>Available nightly runtimes</h3>
+  
+  <table class="full"><!-- fixme make into markdown tables -->
+    <tr>
+      <th>Name</th><th>Description</th><th class="nowrap">Versions</th>
+    </tr>
+    <tr>
+      <td>org.gnome.Platform</td>
+      <td> The unstable GNOME runtime</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.gnome.Platform.Locale</td>
+      <td>Addins to org.gnome.Platform that adds locale data and translations</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.gnome.Sdk</td>
+      <td>The development runtime used to build apps, and required by apps like GNOME Builder </td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.gnome.Sdk.Locale</td>
+      <td>Locale addins for org.gnome.Sdk</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.gnome.Sdk.Debug</td>
+      <td>Debug info addin for org.gnome.Sdk</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Platform</td>
+      <td>Smaller runtime with basic platform including X11, Wayland, Mesa, D-Bus, SDL, etc. Used as a base for org.gnome.Platform and other runtimes.</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Platform.Locale</td>
+      <td>Addins to org.gnome.Platform that adds locale data and translations</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Sdk</td>
+      <td>The development runtime used by org.freedesktop.Platform</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Sdk.Locale</td>
+      <td>Locale addins for org.freedesktop.Sdk</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.Sdk.Debug</td>
+      <td>Debug info Addin for org.freedesktop.Sdk</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.BasePlatform</td>
+      <td>Yocto based core for org.freedesktop.Platform</td>
+      <td>master</td>
+    </tr>
+    <tr>
+      <td>org.freedesktop.BaseSdk</td>
+      <td>Yocto based core for org.freedesktop.Sdk</td>
+      <td>master</td>
+    </tr>
+  </table>
+  
+  <p>Additionally there is a repo with nightly builds of some GNOME applications, which can be listed with:</p>
+  
+  <pre><code>$ xdg-app --user remote-add --gpg-key=nightly.gpg gnome-nightly-apps https://sdk.gnome.org/nightly/repo-apps/&#x000A;$ xdg-app --user remote-ls gnome-nightly-apps --app&#x000A;</code></pre>
+  
+  <p>This includes the following apps:</p>
+  
+  <pre><code>org.gnome.Builder&#x000A;org.gnome.Calculator&#x000A;org.gnome.Calendar&#x000A;org.gnome.Characters&#x000A;org.gnome.Dictionary&#x000A;org.gnome.Documents&#x000A;org.gnome.Epiphany&#x000A;org.gnome.Evince&#x000A;org.gnome.Games&#x000A;org.gnome.Maps&#x000A;org.gnome.News&#x000A;org.gnome.Polari&#x000A;org.gnome.Software.XdgApp&#x000A;org.gnome.Todo&#x000A;org.gnome.Weather&#x000A;org.gnome.bijiben&#x000A;org.gnome.clocks&#x000A;org.gnome.eog&#x000A;org.gnome.gedit&#x000A;org.gnome.iagno&#x000A;</code></pre>
+  
+  <p>Of particular interest is org.gnome.Software.XdgApp, which lets you browse and install xdg-app with a graphical tool.</p>
+  
+  <p>All these apps are using a version name of &quot;master&quot;. For example, to install gedit run:</p>
+  
+  <pre><code>$ xdg-app --user install gnome-nightly-apps org.gnome.gedit master&#x000A;</code></pre>
+  
+  <p>And to update it:</p>
+  
+  <pre><code>$ xdg-app --user update org.gnome.gedit master&#x000A;</code></pre>
+  </div></div></div></section>
+  <section class='bg-black' id='footer'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-3 col-lg-offset-1'>
+          <a class='navbar-brand page-scroll' href='#page-top'>
+            <img title="Flatpak" class="full" src="img/logo.svg" />
+          </a>
+        </div>
+        <ul class='col-lg-7'>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#about'>About</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#users'>Users</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="getting.html">Downloading Flatpak</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#developers'>Developers</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="developer.html">Getting Started with Flatpack</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#get-involved'>Get&nbsp;Involved</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="faq.html">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/jquery.easing.min.js"></script>
+  <script src="javascripts/all.js"></script>
+  <script src="javascripts/bootstrap.js"></script>
+  <script src="javascripts/jquery.toc.min.js"></script>
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-68811788-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flatpak</title>
+    <meta content='text/html; charset=UTF8' http-equiv='content-type'>
+    <meta content='fixme' name='description'>
+    <meta content='fixme' name='keywords'>
+    <meta content='width=device-width,initial-scale=1' name='viewport'>
+    <link href='img/favicon.png' rel='icon' type='image/png'>
+    <link href='favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='img/favicon57.png' rel='apple-touch-icon' sizes='57x57'>
+    <link href='img/favicon152.png' rel='apple-touch-icon' sizes='152x152'>
+    <link href="stylesheets/fonts.css" rel="stylesheet" />
+    <link href="stylesheets/site.css" rel="stylesheet" />
+    <link href="stylesheets/animate.css" rel="stylesheet" />
+    <!-- = stylesheet_link_tag "http://overpass-30e2.kxcdn.com/overpass.css" -->
+  </head>
+  <body id='page-top'>
+    <nav class='navbar navbar-default navbar-fixed-top' id='mainNav'>
+      <div class='container-fluid'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+          <button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="./">Flatpak</a>
+        </div>
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a href='index.html#about'>About</a>
+            </li>
+            <li>
+              <a href='index.html#users'>Users</a>
+            </li>
+            <li>
+              <a href='index.html#developers'>Developers</a>
+            </li>
+            <li>
+              <a href='index.html#get-involved'>Get&nbsp;Involved</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="faq.html">FAQ</a>
+            </li>
+          </ul>
+          <!-- /.navbar-collapse -->
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </body>
+  <section class=""><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1">
+  <h1>Frequently Asked Questions</h1>
+  
+  <ul data-toc data-toc-headings="h3"></ul>
+  
+  <h3>Why the name Flatpak?</h3>
+  
+  <p>IKEA is a world-wide known brand whose success was partly built upon having developed and refined the idea of flatpacking
+  their furniture, which allowed them huge cost savings and efficiencies compared to their competitors. So when we needed
+  a new name for the packaging technology that had been developed by Alex Larsson, a native Swede, we thought that Flatpak would
+  both be a nice play on his nationality and pay homage to the success of IKEA and at the same time send a strong signal
+  about how revolutionary we thought this new packaging technology could be for the Linux desktop.</p>
+  
+  <h3>What is the origin of the Flatpak technology?</h3>
+  
+  <p>Flatpak is a technology that brings toghether many of the lessons learned by its creator Alexander Larsson during his long tenure
+  as a Linux desktop developer and having spent time inside Red Hat working on container technologies. Flatpak builds upon existing
+  technologies such as namespaces, bind mounts and seccomp in the Linux kernel, OSTree from <a href="http://www.projectatomic.io/">Project Atomic</a>
+  and the OCI format that is developed by the <a href="https://www.opencontainers.org/">Open Container Initiative</a>.
+  It has also spawned new technologies such as Bubblewrap which is shared between Flatpak and Project Atomic.</p>
+  
+  <h3>Is Flatpak tied to GNOME? Is it tied to Fedora?</h3>
+  
+  <p>No. While Flatpak has been developed by people with a long involvement in the GNOME and Fedora communities it is not tied
+  to either. In fact, it was designed with the explicit goal of allowing it to build applications using any library stack or
+  programming language an application author might want. At the same it was also built to be distribution agnostic and
+  allow deployment on any Linux operating system out there. We&#39;ve reached out and discussed Flatpak with representatives of other
+  distributions from very early on in the project.</p>
+  
+  <h3>Is Flatpak the same as xdg-app?</h3>
+  
+  <p>Yes, while xdg-app was a fine name to use during development we wanted something with wider appeal and more sparkle
+  to it than xdg-app could provide. So as part of formally launching Flatpak as ready for use we decided to pick a more accessible
+  and fun name.</p>
+  
+  <h3>Is Flatpak a container technology?</h3>
+  
+  <p>It can be, but it doesn&#39;t have to be. Since a desktop application would require quite extensive changes in order to
+  be usable when run inside a container you will likely see Flatpak mostly deployed as a convenient library bundling technology
+  early on, with the sandboxing or containerization being phased in over time for most applications. In general though we
+  try to avoid using the term container when speaking about Flatpak as it tends to cause comparisons with Docker and Rocket,
+  comparisons which quickly stop making technical sense due to the very different problem spaces these technologies
+  try to address. And thus we prefer using the term sandboxing.</p>
+  
+  <h3>How does flatpak relate to freedesktop.org technologies such as desktop files and appstream metadata?</h3>
+  
+  <p>These standards are incorporated as mandatory parts in the flatpak definition. By relying on these standards
+  we are building on years of investment and support under Linux.</p>
+  </div></div></div></section>
+  <section class='bg-black' id='footer'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-3 col-lg-offset-1'>
+          <a class='navbar-brand page-scroll' href='#page-top'>
+            <img title="Flatpak" class="full" src="img/logo.svg" />
+          </a>
+        </div>
+        <ul class='col-lg-7'>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#about'>About</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#users'>Users</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="getting.html">Downloading Flatpak</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#developers'>Developers</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="developer.html">Getting Started with Flatpack</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#get-involved'>Get&nbsp;Involved</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="faq.html">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/jquery.easing.min.js"></script>
+  <script src="javascripts/all.js"></script>
+  <script src="javascripts/bootstrap.js"></script>
+  <script src="javascripts/jquery.toc.min.js"></script>
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-68811788-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

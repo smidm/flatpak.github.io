@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flatpak</title>
+    <meta content='text/html; charset=UTF8' http-equiv='content-type'>
+    <meta content='fixme' name='description'>
+    <meta content='fixme' name='keywords'>
+    <meta content='width=device-width,initial-scale=1' name='viewport'>
+    <link href='img/favicon.png' rel='icon' type='image/png'>
+    <link href='favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='img/favicon57.png' rel='apple-touch-icon' sizes='57x57'>
+    <link href='img/favicon152.png' rel='apple-touch-icon' sizes='152x152'>
+    <link href="stylesheets/fonts.css" rel="stylesheet" />
+    <link href="stylesheets/site.css" rel="stylesheet" />
+    <link href="stylesheets/animate.css" rel="stylesheet" />
+    <!-- = stylesheet_link_tag "http://overpass-30e2.kxcdn.com/overpass.css" -->
+  </head>
+  <body id='page-top'>
+    <nav class='navbar navbar-default navbar-fixed-top' id='mainNav'>
+      <div class='container-fluid'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+          <button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="#page-top">Flatpak</a>
+        </div>
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a class="page-scroll" href="#about">About</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#users">Users</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#developers">Developers</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="#get-involved">Get&nbsp;Involved</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="faq.html">FAQ</a>
+            </li>
+          </ul>
+          <!-- /.navbar-collapse -->
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </body>
+  <header>
+    <div class='header-content'>
+      <div class='header-content-inner'>
+        <h1>the future of application distribution</h1>
+        <hr>
+          <p>The days of chasing multiple Linux distributions are over. Standalone apps for Linux are here!</p>
+          <a class='btn btn-primary btn-xl page-scroll' href='#about'>Find Out How</a>
+        </hr>
+      </div>
+    </div>
+  </header>
+  <section class='bg-primary' id='about'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-8 col-lg-offset-2 text-center'>
+          <h2 class='section-heading'>Self-contained and future proof</h2>
+          <hr class='light'>
+            <p class='text-faded'>Distributing applications on Linux is a pain: different distributions in multiple versions, each with their own versions of libraries. Flatpak is here to change all that.</p>
+            <p>&nbsp;</p>
+          </hr>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-4 col-sm-6'>
+          <h3 class='text-center'>Cross platform</h3>
+          <p>Build and install the same app on different Linux distributions</p>
+        </div>
+        <div class='col-lg-4 col-sm-6'>
+          <h3 class='text-center'>Stable</h3>
+          <p>Install and run the same app on different distribution versions</p>
+        </div>
+        <div class='col-lg-4 col-lg-offset-0 col-sm-6 col-sm-offset-3'>
+          <h3 class='text-center'>Secure</h3>
+          <p>Apps are isolated from the host system and from other apps</p>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-lg-12 text-center'>
+          <h2 class='voffset'>How it works</h2>
+          <hr class='light'>
+            <p class='text-faded'>Flatpak is based on some basic ideas.</p>
+            <p>&nbsp;</p>
+          </hr>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-lg-4 col-sm-6'>
+          <h3 class='text-center'>Runtimes</h3>
+          <p>Runtimes contain the dependencies that are used by apps. They are always the same, whatever Linux distribution is being used. They mean that apps no longer have to be updated to keep pace with distribution changes.</p>
+        </div>
+        <div class='col-lg-4 col-sm-6'>
+          <h3 class='text-center'>Bundled Libraries</h3>
+          <p>Dependencies that aren't in a runtime can be bundled as a part of the app. This makes it possible to use dependencies that aren't in a distribution, and to use a different version of a dependency than the one that's in a distribution.</p>
+        </div>
+        <div class='col-lg-4 col-lg-offset-0 col-sm-6 col-sm-offset-3'>
+          <h3 class='text-center'>Sandboxes</h3>
+          <p>Flatpak isolates apps from the host OS as well as from other applications. This provides security for users and a predictable environment for developers. (Some of these features are work in progress.)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id='users'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-10 col-lg-offset-1'>
+          <h1 class='section-heading text-center'>Install and Run a Flatpak</h1>
+          <hr class='primary'>
+          <p>
+            With Flatpak, applications can be safely updated on a running system, without
+            fear of conflicts occuring. Flatpak also allows multiple versions of the same
+            application to be installed at the same time, which is great for testing
+            development or testing versions. And in the future, Flatpak's security first approach
+            guarantee greater privacy and peace of mind.
+          </p>
+          <p>
+            A collection of applications are available as Flatpaks, which you can try yourself.
+            <ul>
+              <li>
+                <a href='https://wiki.gnome.org/Projects/SandboxedApps/NightlyGraphicsBuilds'>Nightly builds</a>
+                of GIMP, InkScape, DarkTable, MyPaint, Scribus
+              </li>
+              <li>Stable builds (TBD: link) of core GNOME applications</li>
+              <li>LibreOffice builds (TBD: link)</li>
+            </ul>
+          </p>
+          <p>
+            In the near future, you will be able to install flatpaks painlessly from graphical tools
+            such as GNOME Software:
+          </p>
+          <p><iframe height="600" src="https://www.youtube.com/embed/RsNqT13uIQo?feature=oembed" frameborder="0" allowfullscreen class="full"></iframe></p>
+          <p>
+            Until then, you can use the commandline tool to install and update flatpaks.
+          </p>
+          <h3>1. Install Flatpak</h3>
+          <p>
+            Before you can install applications with Flatpak, you need to install
+            Flatpak itself. Currently this has to be done using the command line.
+            This section contains instructions for installing Flatpak on Fedora or Ubuntu.
+            Details on how to install Flatpak on other distros are available on the
+            <a href='getting.html'>getting Flatpak</a>
+            page.
+          </p>
+          <p>
+            With Fedora, run:
+          </p>
+          <pre>$ sudo dnf install flatpak</pre>
+          <p>
+            On Ubuntu, Flatpak is available through a PPA. To install it, run:
+          </p>
+          <pre>$ sudo add-apt-repository ppa:alexlarsson/flatpak&#x000A;$ sudo apt-get update&#x000A;$ sudo apt-get install flatpak</pre>
+          <h3>2. Add repositories</h3>
+          <p>
+            Flatpak allows you to install software from remote repositories. For this
+            example we're going to use two repositories: one which contains GNOME apps,
+            and one which contains the runtime that provides the dependencies
+            they need.
+          </p>
+          <pre>$ wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;$ flatpak remote-add --user --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/&#x000A;$ flatpak --user remote-add --gpg-import=gnome-sdk.gpg gnome-apps https://sdk.gnome.org/repo-apps/</pre>
+          <h3>3. Install a runtime</h3>
+          <p>
+            The runtime provides the dependencies needed by the apps in the GNOME
+            repository.
+          </p>
+          <pre>$ flatpak --user install gnome org.gnome.Platform 3.20</pre>
+          <p>Once this is complete, you're all set to install some apps!</p>
+          <h3>4. View, install and run apps</h3>
+          <p>
+            To view which apps are availalbe in the gnome-apps repository, just run:
+          </p>
+          <pre>$ flatpak --user remote-ls gnome-apps --app</pre>
+          <p>
+            To download and install an app, like gedit, run:
+          </p>
+          <pre>$ flatpak --user install gnome-apps org.gnome.gedit stable</pre>
+          <p>
+            Installed applications should appear in the usual place in your desktop. You can also run them from the command line:
+          </p>
+          <pre>$ flatpak run org.gnome.gedit stable&#x000A;</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='no-padding' id='developers'></section>
+  <aside class='bg-dark'>
+    <div class='container'>
+      <div class='call-to-action'></div>
+    </div>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-10 col-lg-offset-1'>
+          <h1 class='section-heading text-center'>Create an App with Flatpak</h1>
+          <hr class='primary'>
+          <p>
+            Developers can quickly get started using the tutorial below. More detailed information is available in
+            the
+            <a href="developer.html">developers page.</a>
+          </p>
+          <h3>1. Install Flatpak</h3>
+          <p>
+            First we need to install Flatpak itself. The instructions here are for Fedora or Ubuntu.
+            Details for other distros can be found on the
+            <a href='getting.html'>getting Flatpak</a>
+            page.
+            If you are using Fedora, run:
+          </p>
+          <pre>$ sudo dnf install flatpak</pre>
+          <p>
+            On Ubuntu, Flatpak is available through a PPA. To install it, run:
+          </p>
+          <pre>$ sudo add-apt-repository ppa:alexlarsson/flatpak&#x000A;$ sudo apt-get update&#x000A;$ sudo apt-get install flatpak</pre>
+          <h3>2. Install a runtime</h3>
+          <p>
+            Flatpak requires every app to specify a runtime that it uses for its dependencies.
+            We'll use the GNOME 3.20 development platform runtime for this. To install the runtime,
+            we first need to add the repository that provides it. Run:
+          </p>
+          <pre>$ wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;$ flatpak remote-add --user --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/</pre>
+          <p>And then install the runtime itself:</p>
+          <pre>$ flatpak --user install gnome org.gnome.Platform 3.20</pre>
+          <h3>3. Create your app</h3>
+          <p>
+            First we need to create the directory structure for the app:
+          </p>
+          <pre>mkdir hello&#x000A;mkdir hello/files&#x000A;mkdir hello/files/bin&#x000A;mkdir hello/export</pre>
+          <p>
+            Now let's add something simple: create a file in
+            <code>hello/files/bin/</code>
+            called
+            <code>hello.sh</code>.
+            Then add the following to the file and save it:
+          </p>
+          <pre>#!/bin/sh&#x000A;echo "Hello world, from a sandbox"</pre>
+          <p>
+            Now we need to provide some information about the application.
+            In Flatpak this is specified in a key-value file called "metadata", which goes in
+            the
+            <code>hello</code>directory.
+            For a simple app this doesn't contain much, so we can create it manually:
+          </p>
+          <pre>[Application]&#x000A;name=org.test.Hello&#x000A;runtime=org.gnome.Platform/x86_64/3.20&#x000A;command=hello.sh</pre>
+          <p>
+            This specifies the application identifier (<em>org.test.Hello</em>) as
+            well as the runtime the application uses and the command to start the app with.
+          </p>
+          <h3>4. Put the app in a repository</h3>
+          <p>
+            Congratulations, you've made an app! To be able to install it, you need to put it
+            in a repository. This is done with the build-export command:
+          </p>
+          <pre>  flatpak build-export repo hello</pre>
+          <p>
+            This will initialize a local repository in the "repo" directory and export the app to it.
+          </p>
+          <h3>5. Install</h3>
+          <p>
+            Now we're ready to add the repository that was just created and install the app.
+            This is done with two commands:
+          </p>
+          <pre>flatpak --user remote-add --no-gpg-verify tutorial-repo repo&#x000A;flatpak --user install tutorial-repo org.test.Hello</pre>
+          <h3>6. Run</h3>
+          <p>
+            All that's left is to run the app. This can be done with:
+          </p>
+          <pre>flatpak run org.test.Hello</pre>
+          <p>
+            This will print
+            <em>Hello world, from a sandbox</em>.
+          </p>
+          <p>
+            Ta da! That's it: you've successfully built, installed and run your first Flatpak. Many
+            of these steps are simplified by Flatpak's built in tools. For information on how to use
+            them, as well as how to build and distribute more complex apps
+            <a href="developer.html">see the developers page.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <section id='get-involved'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-10 col-lg-offset-1'>
+          <h1 class='section-heading text-center'>Get Involved</h1>
+          <hr class='primary'>
+          <p>
+            Flatpak is Free Software and is developed in the open, as a part of the Freedesktop
+            project. To get in touch, use the
+            <a href='http://lists.freedesktop.org/mailman/listinfo/xdg-app'>xdg-app mailing list</a>
+            or
+            <em>flatpak</em>
+            IRC channel on Freenode. Code can be found on
+            <a href='https://github.com/alexlarsson/xdg-app'>Github</a>
+            and issues are tracked on
+            <a href='https://bugs.freedesktop.org/enter_bug.cgi?product=xdg-app'>Freedesktop Bugzilla</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='bg-black' id='footer'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-3 col-lg-offset-1'>
+          <a class='navbar-brand page-scroll' href='#page-top'>
+            <img title="Flatpak" class="full" src="img/logo.svg" />
+          </a>
+        </div>
+        <ul class='col-lg-7'>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="#about">About</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="#users">Users</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="getting.html">Downloading Flatpak</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="#developers">Developers</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="developer.html">Getting Started with Flatpack</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="#get-involved">Get&nbsp;Involved</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="faq.html">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/jquery.easing.min.js"></script>
+  <script src="javascripts/all.js"></script>
+  <script src="javascripts/bootstrap.js"></script>
+  <script src="javascripts/jquery.toc.min.js"></script>
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-68811788-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flatpak</title>
+    <meta content='text/html; charset=UTF8' http-equiv='content-type'>
+    <meta content='fixme' name='description'>
+    <meta content='fixme' name='keywords'>
+    <meta content='width=device-width,initial-scale=1' name='viewport'>
+    <link href='img/favicon.png' rel='icon' type='image/png'>
+    <link href='favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='img/favicon57.png' rel='apple-touch-icon' sizes='57x57'>
+    <link href='img/favicon152.png' rel='apple-touch-icon' sizes='152x152'>
+    <link href="stylesheets/fonts.css" rel="stylesheet" />
+    <link href="stylesheets/site.css" rel="stylesheet" />
+    <link href="stylesheets/animate.css" rel="stylesheet" />
+    <!-- = stylesheet_link_tag "http://overpass-30e2.kxcdn.com/overpass.css" -->
+  </head>
+  <body id='page-top'>
+    <nav class='navbar navbar-default navbar-fixed-top' id='mainNav'>
+      <div class='container-fluid'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+          <button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="./">Flatpak</a>
+        </div>
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a href='index.html#about'>About</a>
+            </li>
+            <li>
+              <a href='index.html#users'>Users</a>
+            </li>
+            <li>
+              <a href='index.html#developers'>Developers</a>
+            </li>
+            <li>
+              <a href='index.html#get-involved'>Get&nbsp;Involved</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="faq.html">FAQ</a>
+            </li>
+          </ul>
+          <!-- /.navbar-collapse -->
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </body>
+  <section class="bg-dark"><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1">
+  <h1>Getting Started with Flatpak</h1>
+  
+  <p>This guide contains everything you need to know to build and distribute applications using Flatpak. It includes an introduction to the basic concepts and a simple app building tutorial, before moving on to cover automated building and repository hosting.</p>
+  
+  <p>Example tutorials are used throughout this guide. To complete them, it is necessary to have flatpak and flatpak-builder installed on your system. See <a href="getting.html">getting Flatpak</a> for more details on this.</p>
+  
+  <h3>Table of Contents</h3>
+  
+  <ul data-toc data-toc-headings="h2"></ul>
+  
+  <h2>Key Concepts</h2>
+  
+  <p>Flatpak is best understood through its key concepts: runtimes, bundled libraries, SDKs and sandboxes. These help to explain how Flatpak differs from traditional application distribution on Linux, as well as the framework&#39;s capabilities.</p>
+  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+  <svg
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     id="svg2"
+     version="1.1"
+     height="100%"
+     width="100%"
+     viewbox="0 0 800 500"
+     inkscape:version="0.91 r13725"
+     sodipodi:docname="_graph.svg">
+    <sodipodi:namedview
+       pagecolor="#ffffff"
+       bordercolor="#666666"
+       borderopacity="1"
+       objecttolerance="10"
+       gridtolerance="10"
+       guidetolerance="10"
+       inkscape:pageopacity="0"
+       inkscape:pageshadow="2"
+       inkscape:window-width="2560"
+       inkscape:window-height="1376"
+       id="namedview74"
+       showgrid="true"
+       inkscape:zoom="8"
+       inkscape:cx="98.60601"
+       inkscape:cy="-184.43792"
+       inkscape:window-x="0"
+       inkscape:window-y="27"
+       inkscape:window-maximized="1"
+       inkscape:current-layer="svg2">
+      <inkscape:grid
+         type="xygrid"
+         id="grid7376" />
+    </sodipodi:namedview>
+    <defs
+       id="defs4" />
+    <metadata
+       id="metadata7">
+      <rdf:RDF>
+        <cc:Work
+           rdf:about="">
+          <dc:format>image/svg+xml</dc:format>
+          <dc:type
+             rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+          <dc:title />
+        </cc:Work>
+      </rdf:RDF>
+    </metadata>
+    <g
+       id="layer1"
+       transform="translate(0,247.63783)">
+      <rect
+         y="-34.655952"
+         x="263.18195"
+         height="214.63609"
+         width="214.63609"
+         id="rect7719"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:10.00000095;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         rx="19"
+         ry="19" />
+      <a
+         id="a7817"
+         xlink:href="#bundledlibraries"
+         xlink:title="Dependencies shipped with the app itself."
+         href="#bundledlibraries"
+         class="page-scroll"
+         transform="translate(-29,-416.20014)">
+        <rect
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:6;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="rect10794-6"
+           width="183"
+           height="35"
+           x="308"
+           y="462.06232"
+           rx="5"
+           ry="5" />
+        <g
+           transform="translate(0,-78)"
+           id="g7793">
+          <rect
+             ry="6"
+             rx="6"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             id="rect7725"
+             width="56"
+             height="56"
+             x="308"
+             y="476.36218" />
+          <rect
+             y="476.36218"
+             x="372"
+             height="56"
+             width="56"
+             id="rect7727"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             rx="6"
+             ry="6" />
+          <rect
+             ry="6"
+             rx="6"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             id="rect7729"
+             width="56"
+             height="56"
+             x="435"
+             y="476.36218" />
+          <text
+             xml:space="preserve"
+             style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.22637558px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Normal';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+             x="397.22186"
+             y="550.83972"
+             id="text7456-8"><tspan
+               id="tspan7458-5"
+               x="397.22186"
+               y="550.83972">BUNDLED LIBRARIES</tspan></text>
+        </g>
+        <g
+           style="display:inline;fill:#4a90d9;fill-opacity:1;enable-background:new"
+           id="g6936"
+           transform="matrix(2,0,0,2,-1288.0004,983.3622)">
+          <path
+             id="rect6917"
+             transform="translate(241.0002,-473)"
+             d="m 570.5,187 c -0.831,0 -1.5,0.669 -1.5,1.5 l 0,1.5 -3,0 c -0.554,0 -1,0.446 -1,1 l 0,3 1.5,0 c 0.831,0 1.5,0.669 1.5,1.5 0,0.831 -0.669,1.5 -1.5,1.5 l -1.5,0 0,3 c 0,0.554 0.446,1 1,1 l 3,0 0,-1.5 c 0,-0.831 0.669,-1.5 1.5,-1.5 0.831,0 1.5,0.669 1.5,1.5 l 0,1.5 3,0 c 0.554,0 1,-0.446 1,-1 l 0,-3 1.5,0 c 0.831,0 1.5,-0.669 1.5,-1.5 0,-0.831 -0.669,-1.5 -1.5,-1.5 l -1.5,0 0,-3 c 0,-0.554 -0.446,-1 -1,-1 l -3,0 0,-1.5 c 0,-0.831 -0.669,-1.5 -1.5,-1.5 z"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.19753063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new" />
+        </g>
+        <g
+           transform="matrix(2,0,0,2,-1224.0004,983.3622)"
+           id="g10628"
+           style="display:inline;fill:#4a90d9;fill-opacity:1;enable-background:new">
+          <path
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.19753063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new"
+             d="m 570.5,187 c -0.831,0 -1.5,0.669 -1.5,1.5 l 0,1.5 -3,0 c -0.554,0 -1,0.446 -1,1 l 0,3 1.5,0 c 0.831,0 1.5,0.669 1.5,1.5 0,0.831 -0.669,1.5 -1.5,1.5 l -1.5,0 0,3 c 0,0.554 0.446,1 1,1 l 3,0 0,-1.5 c 0,-0.831 0.669,-1.5 1.5,-1.5 0.831,0 1.5,0.669 1.5,1.5 l 0,1.5 3,0 c 0.554,0 1,-0.446 1,-1 l 0,-3 1.5,0 c 0.831,0 1.5,-0.669 1.5,-1.5 0,-0.831 -0.669,-1.5 -1.5,-1.5 l -1.5,0 0,-3 c 0,-0.554 -0.446,-1 -1,-1 l -3,0 0,-1.5 c 0,-0.831 -0.669,-1.5 -1.5,-1.5 z"
+             transform="translate(241.0002,-473)"
+             id="path10630" />
+        </g>
+        <g
+           style="display:inline;fill:#4a90d9;fill-opacity:1;enable-background:new"
+           id="g10632"
+           transform="matrix(2,0,0,2,-1163.0004,983.3622)">
+          <path
+             id="path10634"
+             transform="translate(241.0002,-473)"
+             d="m 570.5,187 c -0.831,0 -1.5,0.669 -1.5,1.5 l 0,1.5 -3,0 c -0.554,0 -1,0.446 -1,1 l 0,3 1.5,0 c 0.831,0 1.5,0.669 1.5,1.5 0,0.831 -0.669,1.5 -1.5,1.5 l -1.5,0 0,3 c 0,0.554 0.446,1 1,1 l 3,0 0,-1.5 c 0,-0.831 0.669,-1.5 1.5,-1.5 0.831,0 1.5,0.669 1.5,1.5 l 0,1.5 3,0 c 0.554,0 1,-0.446 1,-1 l 0,-3 1.5,0 c 0.831,0 1.5,-0.669 1.5,-1.5 0,-0.831 -0.669,-1.5 -1.5,-1.5 l -1.5,0 0,-3 c 0,-0.554 -0.446,-1 -1,-1 l -3,0 0,-1.5 c 0,-0.831 -0.669,-1.5 -1.5,-1.5 z"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.19753063;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:new" />
+        </g>
+      </a>
+      <a
+         id="a7913"
+         xlink:href="#runtimes"
+         xlink:title="Runtimes are external environment dependencies."
+         href="#runtimes"
+         class="page-scroll"
+         transform="translate(-28,-416.20014)">
+        <rect
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:0.00539084;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:6;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="rect10794-2"
+           width="204"
+           height="246.51219"
+           x="35"
+           y="202.55011"
+           rx="5"
+           ry="5" />
+        <g
+           transform="translate(0,-78)"
+           id="g7800">
+          <rect
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;filter-blend-mode:normal;filter-gaussianBlur-deviation:0"
+             id="rect7709"
+             width="96"
+             height="96"
+             x="39"
+             y="283.36218"
+             rx="15"
+             ry="15" />
+          <rect
+             ry="15"
+             rx="15"
+             y="385.36218"
+             x="39"
+             height="96"
+             width="96"
+             id="rect7731"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;filter-blend-mode:normal;filter-gaussianBlur-deviation:0" />
+          <rect
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;filter-blend-mode:normal;filter-gaussianBlur-deviation:0"
+             id="rect7733"
+             width="96"
+             height="96"
+             x="141"
+             y="385.36218"
+             rx="15"
+             ry="15" />
+          <text
+             xml:space="preserve"
+             style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Normal';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+             x="138.75781"
+             y="507.15997"
+             id="text7825"><tspan
+               id="tspan7827"
+               x="138.75781"
+               y="507.15997">RUNTIMES</tspan></text>
+        </g>
+      </a>
+      <path
+         id="path7749"
+         d="m 641,-43.837979 0,108.999995 c 0,11.5333 -11,21 -21,21 l -58,0"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.54509804;fill-rule:nonzero;stroke:#4a90d9;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:3;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.54509804;fill-rule:nonzero;stroke:#4a90d9;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:6;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 175,-12.837979 0,82.999995 c 0,11.5333 11,21 21,21 l 68,0"
+         id="path7743" />
+      <a
+         id="a7991"
+         xlink:href="#sandboxes"
+         xlink:title="Sandbox provides an isolated environment for the app to run."
+         href="#sandboxes"
+         class="page-scroll"
+         transform="translate(-249,-557.20014)">
+        <rect
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 6;stroke-dashoffset:6;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+           id="rect10794"
+           width="95.781113"
+           height="41.50515"
+           x="567"
+           y="485.56232"
+           rx="11"
+           ry="11" />
+        <text
+           xml:space="preserve"
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.22637558px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Normal';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+           x="614.22186"
+           y="508.83975"
+           id="text7456-89"><tspan
+             id="tspan7458-9"
+             x="614.22186"
+             y="508.83975">SANDBOX</tspan></text>
+      </a>
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.54509804;fill-rule:nonzero;stroke:#4a90d9;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:3;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 502,86.162016 -28,0"
+         id="path7766" />
+      <a
+         id="a7979"
+         xlink:href="#sdks"
+         xlink:title="Software Developer Kits"
+         href="#sdks"
+         class="page-scroll"
+         transform="translate(-428,-894.20014)">
+        <g
+           transform="translate(506,-449)"
+           id="g7780">
+          <rect
+             ry="15.5"
+             rx="15.5"
+             y="1133.1122"
+             x="36.75"
+             height="94.75"
+             width="94.75"
+             id="rect7768"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:0.99999958;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+          <g
+             style="display:inline"
+             id="g4757"
+             transform="matrix(2,0,0,2,-814.5,359.61223)">
+            <rect
+               style="color:#bebebe;display:inline;overflow:visible;visibility:visible;fill:none;stroke:none;stroke-width:2;marker:none;enable-background:accumulate"
+               id="rect35549-4"
+               width="16"
+               height="16"
+               x="442"
+               y="401.99997" />
+            <path
+               style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;enable-background:accumulate"
+               d="m 450.0002,403 c -0.22065,0 -0.44081,0.0113 -0.65625,0.0312 l -0.40625,2.09375 c -0.33446,0.0733 -0.66305,0.17589 -0.96875,0.3125 l -1.53125,-1.46875 c -0.38863,0.23011 -0.72695,0.51408 -1.0625,0.8125 l 0.90625,1.90625 c -0.22242,0.24899 -0.42425,0.5225 -0.59375,0.8125 l -2.09375,-0.28125 c -0.17772,0.40877 -0.30872,0.83637 -0.40625,1.28125 l 1.84375,1 c -0.0171,0.16809 -0.0312,0.3274 -0.0312,0.5 0,0.1726 0.0142,0.33191 0.0312,0.5 l -1.84375,1 c 0.0975,0.44488 0.22853,0.87248 0.40625,1.28125 l 2.09375,-0.28125 c 0.1695,0.29 0.37133,0.56351 0.59375,0.8125 l -0.90625,1.90625 c 0.33555,0.29842 0.67387,0.58239 1.0625,0.8125 l 1.53125,-1.46875 c 0.3057,0.13661 0.63429,0.23916 0.96875,0.3125 l 0.40625,2.09375 c 0.21544,0.02 0.4356,0.0312 0.65625,0.0312 0.22065,0 0.44081,-0.0113 0.65625,-0.0312 l 0.40625,-2.09375 c 0.33446,-0.0733 0.66305,-0.17589 0.96875,-0.3125 l 1.53125,1.46875 c 0.38863,-0.23011 0.72695,-0.51408 1.0625,-0.8125 l -0.90625,-1.90625 c 0.22242,-0.24899 0.42425,-0.5225 0.59375,-0.8125 l 2.09375,0.28125 c 0.17772,-0.40877 0.30872,-0.83637 0.40625,-1.28125 l -1.84375,-1 c 0.0171,-0.16809 0.0312,-0.3274 0.0312,-0.5 0,-0.1726 -0.0142,-0.33191 -0.0312,-0.5 l 1.84375,-1 c -0.0975,-0.44488 -0.22853,-0.87248 -0.40625,-1.28125 l -2.09375,0.28125 c -0.1695,-0.29 -0.37133,-0.56351 -0.59375,-0.8125 l 0.90625,-1.90625 c -0.33555,-0.29842 -0.67387,-0.58239 -1.0625,-0.8125 l -1.53125,1.46875 c -0.3057,-0.13661 -0.63429,-0.23916 -0.96875,-0.3125 l -0.40625,-2.09375 C 450.44101,403.0112 450.22085,403 450.0002,403 Z m 0,4 c 1.65685,0 3,1.34315 3,3 0,1.65685 -1.34315,3 -3,3 -1.65685,0 -3,-1.34315 -3,-3 0,-1.65685 1.34315,-3 3,-3 z"
+               id="path35543-6-4" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Normal';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+             x="165.75781"
+             y="1182.1599"
+             id="text7825-8"><tspan
+               id="tspan7827-7"
+               x="165.75781"
+               y="1182.1599">SDK</tspan></text>
+        </g>
+        <g
+           style="display:inline"
+           id="g12308"
+           transform="translate(-61.0002,-4.63784)" />
+      </a>
+      <g
+         style="display:inline;fill:#ffffff"
+         id="g4757-6"
+         transform="matrix(2,0,0,2,-838,-879.83791)">
+        <path
+           style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;enable-background:new"
+           d="m 328,104.96875 c -0.25562,0 -0.52288,0.0854 -0.71875,0.28125 l -6.03125,6.03125 c -0.39174,0.39174 -0.39174,1.04576 0,1.4375 l 4.34375,4.34375 1,-0.53125 c -0.017,-0.16809 -0.0312,-0.3274 -0.0312,-0.5 0,-0.1726 0.0141,-0.33191 0.0312,-0.5 l -1.84375,-1 c 0.0975,-0.44488 0.22853,-0.87248 0.40625,-1.28125 l 2.09375,0.28125 c 0.1695,-0.29 0.37133,-0.56351 0.59375,-0.8125 L 326.9375,110.8125 C 327.27305,110.51408 327.61137,110.23011 328,110 l 1.53125,1.46875 c 0.3057,-0.13661 0.63429,-0.2392 0.96875,-0.3125 l 0.40625,-2.09375 c 0.21544,-0.0199 0.4356,-0.0312 0.65625,-0.0312 0.22065,0 0.44081,0.0113 0.65625,0.0312 l 0.40625,2.09375 c 0.33446,0.0733 0.66305,0.17589 0.96875,0.3125 l 0.6875,-0.65625 -5.5625,-5.5625 c -0.19587,-0.19587 -0.46313,-0.28125 -0.71875,-0.28125 z m 3.5625,8.0625 c -1.65685,0 -3,1.34315 -3,3 0,0.79675 0.30578,1.52531 0.8125,2.0625 l 4.25,-4.25 c -0.53719,-0.50672 -1.26575,-0.8125 -2.0625,-0.8125 z m -4.3125,5.5 -0.15625,0.0312 0.1875,0.1875 c 0.0605,0.0605 0.14862,0.0832 0.21875,0.125 -0.0839,-0.11796 -0.17712,-0.21905 -0.25,-0.34375 z"
+           transform="translate(122,297.99998)"
+           id="rect26937" />
+      </g>
+      <g
+         transform="matrix(2,0,0,2,-739,-879.83791)"
+         id="g10657"
+         style="display:inline;fill:#ffffff" />
+      <g
+         style="display:inline;fill:#ffffff"
+         id="g10661"
+         transform="matrix(2,0,0,2,-739,-980.83787)" />
+      <g
+         transform="matrix(2,0,0,2,-838,-980.83787)"
+         id="g10665"
+         style="display:inline;fill:#ffffff">
+        <path
+           id="path10667"
+           transform="translate(122,297.99998)"
+           d="m 328,104.96875 c -0.25562,0 -0.52288,0.0854 -0.71875,0.28125 l -6.03125,6.03125 c -0.39174,0.39174 -0.39174,1.04576 0,1.4375 l 4.34375,4.34375 1,-0.53125 c -0.017,-0.16809 -0.0312,-0.3274 -0.0312,-0.5 0,-0.1726 0.0141,-0.33191 0.0312,-0.5 l -1.84375,-1 c 0.0975,-0.44488 0.22853,-0.87248 0.40625,-1.28125 l 2.09375,0.28125 c 0.1695,-0.29 0.37133,-0.56351 0.59375,-0.8125 L 326.9375,110.8125 C 327.27305,110.51408 327.61137,110.23011 328,110 l 1.53125,1.46875 c 0.3057,-0.13661 0.63429,-0.2392 0.96875,-0.3125 l 0.40625,-2.09375 c 0.21544,-0.0199 0.4356,-0.0312 0.65625,-0.0312 0.22065,0 0.44081,0.0113 0.65625,0.0312 l 0.40625,2.09375 c 0.33446,0.0733 0.66305,0.17589 0.96875,0.3125 l 0.6875,-0.65625 -5.5625,-5.5625 c -0.19587,-0.19587 -0.46313,-0.28125 -0.71875,-0.28125 z m 3.5625,8.0625 c -1.65685,0 -3,1.34315 -3,3 0,0.79675 0.30578,1.52531 0.8125,2.0625 l 4.25,-4.25 c -0.53719,-0.50672 -1.26575,-0.8125 -2.0625,-0.8125 z m -4.3125,5.5 -0.15625,0.0312 0.1875,0.1875 c 0.0605,0.0605 0.14862,0.0832 0.21875,0.125 -0.0839,-0.11796 -0.17712,-0.21905 -0.25,-0.34375 z"
+           style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;enable-background:new" />
+      </g>
+      <path
+         id="path7452"
+         d="m 474,92.16202 28,0"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.54509804;fill-rule:nonzero;stroke:#4a90d9;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:3;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <path
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.54509804;fill-rule:nonzero;stroke:#4a90d9;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:3;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         d="m 561.8807,92.120603 60.27728,-1.4e-5 c 15.06883,-3e-6 25.7071,-16.478779 25.7071,-28.601395 l -1e-5,-102.689863"
+         id="path7454" />
+      <g
+         id="g7437"
+         transform="translate(0,6)">
+        <rect
+           ry="15"
+           rx="15"
+           y="-216.83795"
+           x="544"
+           height="197"
+           width="197"
+           id="rect10708"
+           style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#9fc4ea;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+        <g
+           id="gnome"
+           transform="matrix(1.999999,0,0,1.999999,170.75063,-2129.837)"
+           style="display:inline;fill:#ffffff">
+          <g
+             style="fill:#ffffff"
+             id="g12878" />
+          <g
+             style="fill:#ffffff;fill-opacity:1"
+             transform="matrix(0.14909103,0,0,0.14909103,251.15364,1013.1857)"
+             id="g6230">
+            <path
+               style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+               id="path9"
+               d="m -63.883826,-115.2699 c -22.295562,0 -26.477906,31.755906 -13.935406,31.755906 12.540687,0 36.231872,-31.755906 13.935406,-31.755906 z" />
+            <path
+               style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+               id="path11"
+               d="m -100.90505,-87.448931 c 6.678161,0.407812 14.005193,-25.485559 1.45363,-23.857029 -12.54703,1.62853 -8.1345,23.449216 -1.45363,23.857029 z" />
+            <path
+               style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+               id="path13"
+               d="m -131.51092,-71.359369 c 4.74966,-2.090718 0.61172,-22.54025 -7.46478,-16.963187 -8.07288,5.577969 2.71512,19.053 7.46478,16.963187 z" />
+            <path
+               style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+               id="path15"
+               d="m -118.12833,-82.063087 c 5.6541,-1.152751 5.96404,-24.345503 -4.1189,-20.184903 -10.08475,4.161496 -1.53066,21.339465 4.1189,20.184903 l 0,0 z" />
+            <path
+               style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+               d="m -88.603607,-30.161244 c 1.003219,7.661438 -5.620563,11.445031 -12.107503,6.505969 -20.65072,-15.722531 34.191909,-23.565219 30.576878,-45.046062 -3.000594,-17.829563 -57.706378,-12.340407 -63.935938,15.556687 -4.21678,18.869937 17.35741,45.04788 39.868657,45.04788 11.074375,0 23.847968,-9.999568 26.23775,-22.66713 1.825187,-9.659719 -21.477219,-5.789125 -20.639844,0.602656 l 0,0 z"
+               id="newshape" />
+          </g>
+        </g>
+        <text
+           xml:space="preserve"
+           style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Normal';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+           x="643.75781"
+           y="-39.040176"
+           id="text7825-1"><tspan
+             id="tspan7827-51"
+             x="643.75781"
+             y="-39.040176">OPERATING SYSTEM</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.22637558px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Normal';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+         x="509.33923"
+         y="93.041977"
+         id="text7456"><tspan
+           id="tspan7458"
+           x="509.33923"
+           y="93.041977">PORTAL</tspan></text>
+      <path
+         id="path7460"
+         d="m 209.22685,-136.55004 5.53387,0 c 15.06884,0 25.70712,16.47878 25.70712,28.60139 l -1e-5,164.80511 c 0,9.271091 7.64295,15.51894 15.51894,15.51894 l 2.26323,0"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:none;fill-opacity:0.54509804;fill-rule:nonzero;stroke:#4a90d9;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:3;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
+      <rect
+         ry="6.0000005"
+         rx="6"
+         style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:#4a90d9;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+         id="rect7462"
+         width="183"
+         height="56.31522"
+         x="279"
+         y="87.004433" />
+      <text
+         xml:space="preserve"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.22637558px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Normal';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+         x="369.01904"
+         y="161.63962"
+         id="text7456-8-7"><tspan
+           id="tspan7458-5-0"
+           x="369.01904"
+           y="161.63962">DATA</tspan></text>
+      <text
+         xml:space="preserve"
+         style="color:#000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:125%;font-family:Overpass;-inkscape-font-specification:'Overpass, Bold';text-indent:0;text-align:center;text-decoration:none;text-decoration-line:none;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;baseline-shift:baseline;text-anchor:middle;display:inline;overflow:visible;visibility:visible;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;enable-background:accumulate"
+         x="374.75781"
+         y="210.95982"
+         id="text7825-0"><tspan
+           id="tspan7827-5"
+           x="374.75781"
+           y="210.95982">APPLICATION</tspan></text>
+    </g>
+    <rect
+       style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;marker-start:none;marker-mid:none;marker-end:none;paint-order:normal;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       id="rect7359"
+       width="21.453516"
+       height="21.453516"
+       x="237.58813"
+       y="6.3237877"
+       rx="3.0151393"
+       ry="3.0151393"
+       transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)" />
+    <g
+       id="g7381"
+       transform="translate(170.5,195.625)">
+      <path
+         sodipodi:nodetypes="sccccccccccsccccccccccsccccccccccsccccccccccssssss"
+         id="cog"
+         d="m -0.0336736,-14.055059 c -0.4413,0 -0.88162,0.0226 -1.3125,0.0624 l -0.8125,4.1875 c -0.66892,0.1466 -1.3261,0.35178 -1.9375,0.625 l -3.0625,-2.9375 c -0.77726,0.46022 -1.4539,1.02816 -2.1250004,1.625 l 1.8125004,3.8125004 c -0.44484,0.49798 -0.8485,1.045 -1.1875,1.625 l -4.1875004,-0.5625 c -0.35544,0.81754 -0.61744,1.67274 -0.8125,2.5625 l 3.6875,2.0000001 c -0.0342,0.33618 -0.0624,0.6548 -0.0624,1 0,0.3452 0.0284,0.6638199 0.0624,0.9999999 l -3.6875,2 c 0.195,0.88976 0.45706,1.74496 0.8125,2.5625 l 4.1875004,-0.5625 c 0.339,0.58 0.74266,1.12702 1.1875,1.625 L -9.283674,10.382341 c 0.6711004,0.59684 1.3477404,1.16478 2.1250004,1.625 l 3.0625,-2.9375 c 0.6114,0.27322 1.26858,0.47832 1.9375,0.625 l 0.8125,4.1875 c 0.43088,0.04 0.8712,0.0624 1.3125,0.0624 0.4413,0 0.88162,-0.0226 1.3125,-0.0624 l 0.8125,-4.1875 c 0.66892,-0.1466 1.3261,-0.35178 1.9375,-0.625 l 3.0625,2.9375 c 0.8193807,-0.451715 1.5684089,-0.960417 2.1249996,-1.625 L 7.4038264,6.5698414 c 0.44484,-0.49798 0.8485,-1.045 1.1875,-1.625 l 4.1874996,0.5625 c 0.35544,-0.81754 0.61744,-1.67274 0.8125,-2.5625 l -3.6875,-2 c 0.0342,-0.33618 0.0624,-0.6547999 0.0624,-0.9999999 0,-0.3452 -0.0284,-0.66382 -0.0624,-1 l 3.6875,-2.0000001 c -0.195,-0.88976 -0.45706,-1.74496 -0.8125,-2.5625 l -4.1874996,0.5625 c -0.339,-0.58 -0.74266,-1.12702 -1.1875,-1.625 L 9.216326,-10.492659 c -0.6710996,-0.59684 -1.3477396,-1.16478 -2.1249996,-1.625 l -3.0625,2.9375 c -0.6114,-0.27322 -1.26858,-0.47832 -1.9375,-0.625 l -0.8125,-4.1875 c -0.43088,-0.04 -0.8712,-0.0624 -1.3125,-0.0624 z m 0,8.0000004 c 3.3137,0 6,2.6863 6,6.0000001 0,3.3136999 -2.6863,5.9999999 -6,5.9999999 -3.3137,0 -6,-2.6863 -6,-5.9999999 0,-3.3137001 2.6863,-6.0000001 6,-6.0000001 z"
+         style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#4a90d9;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;enable-background:accumulate"
+         inkscape:connector-curvature="0" />
+    </g>
+  </svg>
+  <style>
+    @keyframes linespulse {
+      0% { stroke-dashoffset: 12; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes spin {
+      0% { transform: rotateZ(0deg); }
+      100% { transform: rotateZ(359deg); }
+    }
+    path {
+      animation-name: linespulse;
+      animation-duration: 1s;
+      animation-iteration-count:infinite;
+      animation-direction: normal;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+    a tspan { transition: font-size 200ms ease-in-out; }
+    a tspan:hover { font-size: 140%; }
+    #gnome { transform: matrix(1.999999,0,0,1.999999,170.75063,-2129.837); transition: transform 200ms ease-in-out; }
+    #gnome:hover { transform: matrix(1.999999,0,0,1.999999,170.75063,-2134.837); }
+    #cog {
+      animation: spin 6s infinite normal linear forwards;
+    }
+  </style>
+  <h3>Runtimes<a id="runtimes"></a></h3>
+  
+  <p>Runtimes provide the environment that each application runs in, including the basic dependencies they might require. Each runtime can be thought of as a <code>/usr</code> filesystem (indeed, when an app is run, its runtime is mounted at <code>/usr</code>). Various runtimes are available, from more minimal (but more stable) Freedesktop runtimes, to larger runtimes produced by desktops like GNOME or KDE. (The <a href="runtimes.html">runtimes page</a> provides an overview of the runtimes that are currently available.)</p>
+  
+  <p>Each application must be built against a runtime, and this runtime must be installed on a host system in order for the application to run. Users can install multiple different runtimes at the same time, including different versions of the same runtime.</p>
+  
+  <p>Flatpak identifies runtimes (as well as SDKs and applications) by a triple of name/arch/branch. The name is expected to be in inverse-dns notation, which needs to match the D-Bus name used for the application. For example: &#39;<code>org.gnome.Sdk/x86_64/3.14</code>&#39; or &#39;<code>org.gnome.Builder/i686/master</code>&#39;.</p>
+  
+  <h3>Bundled Libraries<a id="bundledlibraries"></a></h3>
+  
+  <p>If an application requires any dependencies that aren&#39;t in its runtime, they can be bundled along with the application itself. This allows apps to use dependencies that aren&#39;t available in a distribution, or to use a different version of a dependency from the one that&#39;s installed on the host.</p>
+  
+  <p>Both runtimes and bundled libraries can be installed per-user and system-wide.</p>
+  
+  <h3>SDKs (Software Developer Kits)<a id="sdks"></a></h3>
+  
+  <p>An SDK is a runtime that includes the &#39;devel&#39; parts which are not needed at runtime, such as build and packaging tools, header files, compilers and debuggers. Each application is built against an SDK, which is typically paired with a runtime (this is the runtime that will be used by the application at runtime).</p>
+  
+  <h3>Sandboxes<a id="sandboxes"></a></h3>
+  
+  <p>With Flatpak, each app is built and run in an isolated environment. By default, the application can only &#39;see&#39; itself and its runtime. Access to user files, network, graphics sockets, subsystems on the bus and devices all has to be explicitly granted. (As will be described later, Flatpak provides several ways to do this.) Access to other things, such as other processes, is (deliberately) not possible.</p>
+  
+  <h2>The flatpak Command</h2>
+  
+  <p><code>flatpak</code> is the tool that is used install, remove and update runtimes and applications. It can also be used to view what is currently installed, and has commands for building and distributing application bundles. <code>flatpak --help</code> provides a full list of available commands.</p>
+  
+  <h2>Anatomy of a Flatpak App</h2>
+  
+  <p>Each Flatpak app has the following basic structure:</p>
+  
+  <pre><code>metadata    # A keyfile which provides information about the application,&#x000A;            # including information that is necessary for setting up the sandbox&#x000A;            # for running the application&#x000A;/files      # The files that make up the application&#x000A;/files/bin  # Application binaries&#x000A;/export     # Files which the host environment needs access to, such as the&#x000A;            # application&#39;s desktop file, icon and D-Bus service file&#x000A;</code></pre>
+  
+  <p>A typical metadata file looks like this:</p>
+  
+  <pre><code>[Application]&#x000A;name=org.gnome.gedit&#x000A;runtime=org.gnome.Platform/x86_64/3.20&#x000A;sdk=org.gnome.Sdk/x86_64/3.20&#x000A;command=gedit&#x000A;&#x000A;[Context]&#x000A;shared=ipc;network;&#x000A;sockets=x11;wayland;pulseaudio;&#x000A;devices=dri;&#x000A;filesystems=host;&#x000A;&#x000A;[Environment]&#x000A;GEDIT_FOO=bar&#x000A;&#x000A;[Session Bus Policy]&#x000A;org.extra.name=talk&#x000A;org.other.name=own&#x000A;</code></pre>
+  
+  <p>This specifies the name of the application, the runtime it requires, the SDK that it is built against and the command used to run it. It also specifies file and device access, sets certain environment variables (inside the sandbox, of course), and how to connect to the session bus.</p>
+  
+  <p>All the files in the export directory must have the application id as a prefix. This guarantees that applications cannot cause conflicts, and that they can’t override any system installed applications.</p>
+  
+  <h3>AppData</h3>
+  
+  <p>Many Linux distributions provide an app store or app center for browsing and installing applications. <a href="https://www.freedesktop.org/software/appstream/docs/chap-Quickstart.html#sect-Quickstart-DesktopApps">AppData</a> is a standard format for providing application information that can be used by app stores, such as an application description and screenshots. Flatpak makes use of the AppData standard, and application authors are recommended to use it to include information about their applications.</p>
+  
+  <h2>Building Simple Apps</h2>
+  
+  <p>The <code>flatpak</code> utility provides a simple set of commands for building and distributing applications. These allow creating new Flatpaks, into which new or existing applications can be built. This section describes how to build a simple application which doesn&#39;t require any additional dependencies outside of the runtime it is built against.</p>
+  
+  <h3>Installing an SDK</h3>
+  
+  <p>As described above, an SDK is a special type of runtime that is used to build applcations. Typically, an SDK is paired with a runtime that will be used by the app at runtime. The GNOME 3.20 SDK is used to build applications that use the GNOME 3.20 runtime, for example. The rest of this guide uses this SDK and runtime for its examples. To do this, download the repository GPG key and then add the repository that contains the runtime and SDK:</p>
+  
+  <pre><code>$ wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;$ flatpak remote-add --user --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/&#x000A;</code></pre>
+  
+  <p>You can now download and install the runtime and SDK. (If you have already completed the tutorial on the Flatpak homepage, you will already have the runtime installed.)</p>
+  
+  <pre><code>$ flatpak --user install gnome org.gnome.Platform 3.20&#x000A;$ flatpak --user install gnome org.gnome.Sdk 3.20&#x000A;</code></pre>
+  
+  <p>This might be a good time to try installing an application and having a look &#39;under the hood&#39;. To do this, you need to add a repository that contains applications. In this case we are going to use the gnome-apps repository and install gedit:</p>
+  
+  <pre><code>$ flatpak --user remote-add --gpg-key=gnome-sdk.gpg gnome-apps https://sdk.gnome.org/repo-apps/&#x000A;$ flatpak --user install gnome-apps org.gnome.gedit stable&#x000A;</code></pre>
+  
+  <p>You can now use the following command to get a shell in the &#39;devel sandbox&#39;:</p>
+  
+  <pre><code>$ flatpak run --devel --command=bash org.gnome.gedit&#x000A;</code></pre>
+  
+  <p>This gives you an environment which has the application bundle mounted in <code>/app</code>, and the SDK it was built against mounted in <code>/usr</code>. You can explore these two directories to see what a typical flatpak looks like, as well as what is included in the SDK.</p>
+  
+  <h3>Creating an app</h3>
+  
+  <p>To create an application, the first step is to use the build-init command. This creates a directory into which an applcation can be built, which contains the correct directory structure and a metadata file which contains information about the app. The format for build-init is:</p>
+  
+  <pre><code>flatpak build-init DIRECTORY APPNAME SDK RUNTIME [BRANCH]&#x000A;</code></pre>
+  
+  <ul>
+  <li><code>DIRECTORY</code> is the name of the directory that will be created to contain the application</li>
+  <li><code>APPNAME</code> is the D-Bus name of the application</li>
+  <li><code>SDK</code> is the name of the SDK that will be used to build the application</li>
+  <li><code>RUNTIME</code> is the name of the runtime that will be required by the application</li>
+  <li><code>BRANCH</code> is typically the version of the SDK and runtime that will be used</li>
+  </ul>
+  
+  <p>For example, to build the GNOME Dictionary application using the GNOME 3.20 SDK, the command would look like:</p>
+  
+  <pre><code>$ flatpak build-init dictionary org.gnome.Dictionary org.gnome.Sdk org.gnome.Platform 3.20&#x000A;</code></pre>
+  
+  <p>You can try this command now. In the next step we will build an application inside the resulting dictionary directory.</p>
+  
+  <h3>Building</h3>
+  
+  <p><code>flatpak build</code> is used to build an application using an SDK. This command is used to provide access to a sandbox. For example, the following will create a file inside the appdir sandbox (in the files directory):</p>
+  
+  <pre><code>$ flatpak build dictionary touch /app/some_file&#x000A;</code></pre>
+  
+  <p>(It is best to remove this file before continuing.)</p>
+  
+  <p>The build command allows existing applications that have been made using the traditional configure, make, make install routine to be built inside a flatpak. You can try this using GNOME Dictionary. First, download the source files, extract them and switch to the resulting directory:</p>
+  
+  <pre><code>$ wget https://download.gnome.org/sources/gnome-dictionary/3.20/gnome-dictionary-3.20.0.tar.xz&#x000A;$ tar xvf gnome-dictionary-3.20.0.tar.xz&#x000A;$ cd gnome-dictionary-3.20.0/&#x000A;</code></pre>
+  
+  <p>Then you can use the build command to build and install the source inside the dictionary directory that was previously made:</p>
+  
+  <pre><code>$ flatpak build ../dictionary ./configure --prefix=/app&#x000A;$ flatpak build ../dictionary make&#x000A;$ flatpak build ../dictionary make install&#x000A;$ cd ..&#x000A;</code></pre>
+  
+  <p>Since these are run in a sandbox, the compiler and other tools from the SDK are used to build and install, rather than those on the host system.</p>
+  
+  <h3>Completing the build</h3>
+  
+  <p>Once an application has been built, the build-finish command needs to be used to specify access to different parts of the host, such as networking and graphics sockets. This command is also used to specify the command that is used to run the app (done by modifying the metadata file), and to create the application&#39;s exports directory. For example:</p>
+  
+  <pre><code>$ flatpak build-finish dictionary --socket=x11 --share=network --command=gnome-dictionary&#x000A;</code></pre>
+  
+  <p>At this point you have successfully built a flatpak and prepared it to be run. To test the app, you need to export the Dictionary to a repository, add that repository and then install and run the app:</p>
+  
+  <pre><code>$ flatpak build-export repo dictionary&#x000A;$ flatpak --user remote-add --no-gpg-verify --if-not-exists tutorial-repo repo&#x000A;$ flatpak --user install tutorial-repo org.gnome.Dictionary&#x000A;$ flatpak run org.gnome.Dictionary&#x000A;</code></pre>
+  
+  <p>This exports the app, creates a repository called tutorial-repo, installs the Dictionary application and runs it.</p>
+  
+  <h2>Building More Complex Apps With flatpak-builder</h2>
+  
+  <p>If an application requires additional dependencies that aren&#39;t provided by its runtime, Flatpak allows them to be bundled as modules as part of the app itself. This requires building each module inside the application, which can be a lot of work. The <code>flatpak-builder</code> tool can automate this multi-step build process.</p>
+  
+  <p>flatpak-builder takes care of the routine commands used to build an app and any bundled libraries, thus allowing application building to be automated. To do this, it expects modules to be built in a standard manner by following what is called the <a href="https://github.com/cgwalters/build-api">Build API</a>. If any modules don&#39;t conform to this API, they will need to be modified.</p>
+  
+  <h3>Manifests</h3>
+  
+  <p>The input to flatpak-builder is a json file that describes the parameters for building an app, as well as each of the modules to be bundled. This file is called the manifest. Module sources can be of several types, including .tar or .zip archives, Git or Bzr repositories, patch files or shell commands that are run.</p>
+  
+  <p>The GNOME Dictionary manifest is short, because the only module is the application itself:</p>
+  
+  <pre><code>{&#x000A;  &quot;app-id&quot;: &quot;org.gnome.Dictionary&quot;,&#x000A;  &quot;runtime&quot;: &quot;org.gnome.Platform&quot;,&#x000A;  &quot;runtime-version&quot;: &quot;3.20&quot;,&#x000A;  &quot;sdk&quot;: &quot;org.gnome.Sdk&quot;,&#x000A;  &quot;command&quot;: &quot;gnome-dictionary&quot;,&#x000A;  &quot;finish-args&quot;: [ &#x000A;     &quot;--socket=x11&quot;, &#x000A;     &quot;--share=network&quot;  &#x000A;  ],&#x000A;  &quot;modules&quot;: [&#x000A;    {&#x000A;      &quot;name&quot;: &quot;gnome-dictionary&quot;,&#x000A;      &quot;sources&quot;: [&#x000A;        {&#x000A;          &quot;type&quot;: &quot;archive&quot;,&#x000A;          &quot;url&quot;: &quot;https://download.gnome.org/sources/gnome-dictionary/3.20/gnome-dictionary-3.20.0.tar.xz&quot;,&#x000A;          &quot;sha256&quot;: &quot;efb36377d46eff9291d3b8fec37baab2355f9dc8bc7edb791b6a625574716121&quot;&#x000A;        }&#x000A;      ]&#x000A;    }&#x000A;  ]&#x000A;}&#x000A;</code></pre>
+  
+  <h3>Cleanup</h3>
+  
+  <p>flatpak-builder performs a cleanup phase after the build, which can be used to remove headers and development docs, among other things. Two properties in the manifest file can be used for this. First, a list of filename patterns can be included:</p>
+  
+  <pre><code>cleanup&quot;: [ &quot;/include&quot;, &quot;/bin/foo-*&quot;, &quot;*.a&quot; ]&#x000A;</code></pre>
+  
+  <p>The second cleanup property is a list of commands that are run during the cleanup phase:</p>
+  
+  <pre><code>&quot;cleanup-commands&quot;: [ &quot;sed s/foo/bar/ /bin/app.sh&quot; ]&#x000A;</code></pre>
+  
+  <p>Cleanup properties can be set on a per-module basis, and will then only match filenames that were created by that particular module.</p>
+  
+  <h3>File renaming</h3>
+  
+  <p>Files that are exported by a flatpak must be named using the application ID. However, application&#39;s source files will typically not follow this convention. To get around this, flatpak-builder allows renaming application icons, desktop files and AppData files as a part of the build process, using the rename-icon, rename-desktop-file and rename-appdata properties.</p>
+  
+  <h3>Example</h3>
+  
+  <p>You can try flatpak-builder for yourself, using the repository that was created in the previous section. To do this, place the manifest json from above into a file called <code>org.gnome.Dictionary.json</code> and run the following command:</p>
+  
+  <pre><code>$ flatpak-builder --repo=repo dictionary2 org.gnome.Dictionary.json&#x000A;</code></pre>
+  
+  <p>This will:</p>
+  
+  <ul>
+  <li>Create a new directory (called dictionary2)</li>
+  <li>Download and verify the Dictionary source code</li>
+  <li>Build and install the source code, using the SDK rather than the host system</li>
+  <li>Finish the build, by setting permissions (in this case giving access to X and the network)</li>
+  <li>Export the resulting build to the tutorial repository, which contains the Dictionary app that was previously installed</li>
+  </ul>
+  
+  <p>flatpak-builder will also do some other useful things, like creating a separately installable debug runtime (called <code>org.gnome.Dictionary.Debug</code> in this case) and separately installable translations runtimes (called <code>org.gnome.Dictionary.Locale.$lang</code>).</p>
+  
+  <p>It is now possible to update the installed version of the Dictionary application with the new version that was built and exported by flatpak-builder:</p>
+  
+  <pre><code>$ flatpak --user update org.gnome.Dictionary&#x000A;</code></pre>
+  
+  <p>To check that the application has been successfully updated, you can compare the sha256 commit of the installed app with the commit ID that was printed by flatpak-builder:</p>
+  
+  <pre><code>$ flatpak --user info org.gnome.Dictionary&#x000A;</code></pre>
+  
+  <p>And finally, you can run the new version of the Dictionary app:</p>
+  
+  <pre><code>$ flatpak run org.gnome.Dictionary&#x000A;</code></pre>
+  
+  <h3>Example manifests</h3>
+  
+  <p>A complete manifest for <a href="https://git.gnome.org/browse/gnome-apps-nightly/tree/org.gnome.Dictionary.json">GNOME Dictionary built from Git is available</a>
+  , in addition to manifests for <a href="https://git.gnome.org/browse/gnome-apps-nightly/tree/">a range of other GNOME applications</a>.</p>
+  
+  <h2>Working with the Sandbox</h2>
+  
+  <p>By default, a flatpak has extremely limited access to the host environment. This includes:</p>
+  
+  <ul>
+  <li>No access to any host files except the runtime, the app and <code>~/.var/app/$APPID</code>. Only the last of these is writable.</li>
+  <li>No access to the network.</li>
+  <li>No access to any device nodes (apart from <code>/dev/null</code>, etc).</li>
+  <li>No access to processes outside the sandbox.</li>
+  <li>Limited syscalls.  For instance, apps can&#39;t use nonstandard network socket types or ptrace other processes.</li>
+  <li>Limited access to the session D-Bus instance - an app can only own its own name on the bus.</li>
+  <li>No access to host services like X, system D-Bus, or PulseAudio.</li>
+  </ul>
+  
+  <p>Most applications will need access to some of these resources in order to be useful, and flatpak provides a number of ways to give an application access to them. The build-finish command is the simplest of these. As was seen in a previous example, this can be used to add access to graphics sockets and network resources:</p>
+  
+  <pre><code>$ flatpak build-finish dictionary2 --socket=x11 --share=network --command=gnome-dictionary&#x000A;</code></pre>
+  
+  <p>These arguments translate into several properties in the application metadata file:</p>
+  
+  <pre><code>[Application]&#x000A;name=org.gnome.Dictionary&#x000A;runtime=org.gnome.Platform/x86_64/3.20&#x000A;sdk=org.gnome.Sdk/x86_64/3.20&#x000A;command=gnome-dictionary&#x000A;&#x000A;[Context]&#x000A;shared=network;&#x000A;sockets=x11;&#x000A;</code></pre>
+  
+  <p>Note that in this example access to the filesystem wasn&#39;t granted. This can be tested by installing the resulting application and running:</p>
+  
+  <pre><code>$ flatpak run --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
+  
+  <p>build-finish allows a whole range of resources to be added to an application. Run <code>flatpak build-finish --help</code> to view the full list.</p>
+  
+  <p>There are several ways to override the permissions that are set in an application&#39;s metadata file. One of these is to override them using flatpak run, which accepts the same parameters as build-finish. For example, this will let the Dictionary application see your home directory:</p>
+  
+  <pre><code>$ flatpak run --filesystem=home --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
+  
+  <p>flatpak run can also be used to permanently override an application&#39;s permissions:</p>
+  
+  <pre><code>$ flatpak --user override --filesystem=home org.gnome.Dictionary&#x000A;$ flatpak run --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
+  
+  <p>It is also possible to remove permissions using the same method. You can use the following command to see what happens when access to the filesystem is removed, for example:</p>
+  
+  <pre><code> $ flatpak run --nofilesystem=home --command=ls org.gnome.Dictionary ~/&#x000A;</code></pre>
+  
+  <h3>Useful sandbox permissions</h3>
+  
+  <p>flatpak provides an array of options for controlling sandbox permissions. The following are some of the most useful.</p>
+  
+  <p>Grant access to files:</p>
+  
+  <pre><code>--filesystem=host    # All files&#x000A;--filesystem=home    # Home directory&#x000A;--filesystem=home:ro # Home directory, read-only&#x000A;--filesystem=/some/dir --filesystem=~/other/dir # Paths&#x000A;--filesystem=xdg-download # The XDG download directory&#x000A;--nofilesystem=...   # Undo some of the above&#x000A;</code></pre>
+  
+  <p>Allow the application to show windows using X11:</p>
+  
+  <pre><code>--socket=x11 --share=ipc&#x000A;</code></pre>
+  
+  <p>Note: –share=ipc means that the sandbox shares IPC namespace with the host. This is not necessarily required, but without it the X shared memory extension will not work, which is very bad for X performance.</p>
+  
+  <p>Allow OpenGL rendering:</p>
+  
+  <pre><code>--device=dri&#x000A;</code></pre>
+  
+  <p>Allow the application to show windows using Wayland:</p>
+  
+  <pre><code>--socket=wayland&#x000A;</code></pre>
+  
+  <p>Allow the application play sounds using PulseAudio:</p>
+  
+  <pre><code>--socket=pulseaudio&#x000A;</code></pre>
+  
+  <p>Allow the application access the network:</p>
+  
+  <pre><code>--share=network&#x000A;</code></pre>
+  
+  <p>Note: giving network access also grants access to all host services listening on abstract Unix sockets (due to how network namespaces work), and these have no permission checks. This unfortunately affects e.g. the X server and the session bus which listens to abstract sockets by default. A secure distribution should disable these and just use regular sockets.</p>
+  
+  <p>Allow the application talk to a named service on the session bus:</p>
+  
+  <pre><code>--talk-name=org.freedesktop.secrets&#x000A;</code></pre>
+  
+  <p>Allow the application talk to a named service on the system bus:</p>
+  
+  <pre><code>--system-talk-name=org.freedesktop.GeoClue2&#x000A;</code></pre>
+  
+  <p>Allow the application unlimited access to all of D-Bus:</p>
+  
+  <pre><code>--socket=system-bus --socket=session-bus&#x000A;</code></pre>
+  
+  <h2>Distributing Applications</h2>
+  
+  <p>As has already been seen, flatpak installs runtimes and apps from repositories. To do this, it uses <a href="https://ostree.readthedocs.io/en/latest/">OSTree</a>
+  . This is similar to Git, but has been designed to handle trees of large binaries. Like Git, it has the concept of repositories and commits. Applications are stored as branches.</p>
+  
+  <p>To distribute an application, it must be exported to a repository. This is done using the build-export command:</p>
+  
+  <pre><code>$ flatpak build-export [OPTION…] LOCATION DIRECTORY [BRANCH]&#x000A;</code></pre>
+  
+  <p>The resulting repository is in an archive-z2 format. To allow users to use a repository, all you have to do is copy it to a web server and give them the URL.</p>
+  
+  <h3>Managing repositories</h3>
+  
+  <p>The flatpak build-update-repo command provides most of the tools for managing repositories. For example, to set a user readable name for a repository:</p>
+  
+  <pre><code>$ flatpak build-update-repo --title=&quot;Nice name&quot; repo&#x000A;</code></pre>
+  
+  <p>build-update also lets you prune (<code>--prune</code>) unused objects and deltas from the repository, and even remove older revisions (using <code>--prune-depth</code>) which is useful for things like automatic nightly build repositories.</p>
+  
+  <h3>AppData</h3>
+  
+  <p>As already described, flatpak uses the AppData standard to store user visible information about applications. This information needs to be accessible to clients in order to be displayed in app stores. To do this, build-update-repo scans all the branches in the repository for AppData data, which is collected and committed into a repository-wide AppStream branch. flatpak then keeps a local copy of this branch for each remote, which can manually updated using the update command. For example:</p>
+  
+  <pre><code>$ flatpak --user update --appstream nightly&#x000A;</code></pre>
+  
+  <h3>Hosting a repository</h3>
+  
+  <p>While it is relatively simple to host a flatpak repository, there are some important details to be aware of.</p>
+  
+  <p>archive-z2 repositories contain a single file for each file in the application. This means that pull operations will do a lot of HTTP requests. Since new requests are slow, it is important to enable HTTP keep-alive on the web server.</p>
+  
+  <p>OSTree supports something called static deltas. These are single files in the repo that contains all the data needed to go between two revisions (or from nothing to a revision). Creating such deltas will take up more space on the server, but will make downloads much faster. This can be done with the build-update-repo --generate-static-deltas.</p>
+  
+  <h3>GPG signatures</h3>
+  
+  <p>By default OSTree refuses to pull from a remote repository that is not signed. To disable GPG verification, the <code>--no-gpg-verify</code> option needs to be used when a remote is added. Alternatively, it can be disabled on an existing remote using flatpak remote-modify.</p>
+  
+  <p>OSTree requires signatures for every commit and on repository summary files. These objects are created by the build-update-repo and build-export commands, as well as indirectly by flatpak-builder. A GPG key should therefore be passed to each of these commands, and optionally the gpg home directory to use. For example:</p>
+  
+  <pre><code>$ flatpak build-export --gpg-sign=KEYID --gpg-homedir=/some/dir appdir repo&#x000A;</code></pre>
+  </div></div></div></section>
+  <section class='bg-black' id='footer'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-3 col-lg-offset-1'>
+          <a class='navbar-brand page-scroll' href='#page-top'>
+            <img title="Flatpak" class="full" src="img/logo.svg" />
+          </a>
+        </div>
+        <ul class='col-lg-7'>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#about'>About</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#users'>Users</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="getting.html">Downloading Flatpak</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#developers'>Developers</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="developer.html">Getting Started with Flatpack</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#get-involved'>Get&nbsp;Involved</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="faq.html">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/jquery.easing.min.js"></script>
+  <script src="javascripts/all.js"></script>
+  <script src="javascripts/bootstrap.js"></script>
+  <script src="javascripts/jquery.toc.min.js"></script>
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-68811788-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

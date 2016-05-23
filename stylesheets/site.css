@@ -6642,3 +6642,12 @@ table {
           /* padding-left: 1em; */ }
           #footer ul li ul li a {
             color: #5e5e5e; }
+
+.unselectable {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  color: #919191;
+  font-weight: bold;
+  font-size: 90%; }

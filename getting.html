@@ -73,14 +73,6 @@
   
   <pre>&#x000A;<span class="unselectable">$ </span>wget -O - https://sdk.gnome.org/apt/debian/conf/alexl.gpg.key|apt-key add -&#x000A;<span class="unselectable">$ </span>echo "deb [arch=amd64] https://sdk.gnome.org/apt/debian/ jessie main" > /etc/apt/sources.list.d/flatpak.list&#x000A;<span class="unselectable">$ </span>apt update&#x000A;<span class="unselectable">$ </span>apt install flatpak</pre>
   
-  <p>This will install Flatpak, but by default Debian disallows user-namespaces as non-root, which means Flatpak will not work. To enable this run:</p>
-  
-  <pre>&#x000A;<span class="unselectable">$ </span>sysctl kernel.unprivileged_userns_clone=1</pre>
-  
-  <p>To make this change permanent (after reboot), run:</p>
-  
-  <pre>&#x000A;<span class="unselectable">$ </span>echo 'kernel.unprivileged_userns_clone = 1' > /etc/sysctl.d/10-unpriv-ns.conf</pre>
-  
   <h3>Arch</h3>
   
   <p>A <code>flatpak</code> package is available in the official repositories.</p>

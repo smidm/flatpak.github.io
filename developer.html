@@ -565,6 +565,24 @@
   
   <p>With Flatpak, each app is built and run in an isolated environment. By default, the application can only &#39;see&#39; itself and its runtime. Access to user files, network, graphics sockets, subsystems on the bus and devices have to be explicitly granted. (As will be described later, Flatpak provides several ways to do this.) Access to other things, such as other processes, is (deliberately) not possible.</p>
   
+  <h2>Technologies</h2>
+  
+  <p>Flatpak tries to avoid reinventing the wheel. We build on existing technologies where it makes sense. Many of the important ingredients for Flatpak are inherited from Linux containers and related initiatives:</p>
+  
+  <ul>
+  <li>The <a href="https://github.com/projectatomic/bubblewrap">bubblewrap</a> utility from <a href="http://www.projectatomic.io/">Project Atomic</a>, which lets unprivileged users set up and run containers, using kernel features such as
+  
+  <ul>
+  <li>Namespaces</li>
+  <li>Bind mounts</li>
+  <li>Seccomp rules</li>
+  </ul></li>
+  <li><a href="https://www.freedesktop.org/wiki/Software/dbus/">D-Bus</a>, a well-established way to provide high-level APIs to application</li>
+  <li>The OCI format from the <a href="https://www.opencontainers.org/">Open Container Initiative</a>, as a convenient transport format for single-file bundles</li>
+  <li>The <a href="https://ostree.readthedocs.io/en/latest/">OSTree</a> system for versioning and distributing filesystem trees</li>
+  <li><a href="https://www.freedesktop.org/software/appstream/docs/">Appstream</a> metadata that makes Flatpak apps show up nicely in software-center applications</li>
+  </ul>
+  
   <h2>The flatpak Command</h2>
   
   <p><code>flatpak</code> is the tool that is used to install, remove and update runtimes and applications. It can also be used to view what is currently installed, and has commands for building and distributing application bundles. <code>flatpak --help</code> provides a full list of available commands.</p>

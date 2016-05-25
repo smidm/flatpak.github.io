@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flatpak</title>
+    <meta content='text/html; charset=UTF8' http-equiv='content-type'>
+    <meta content='fixme' name='description'>
+    <meta content='fixme' name='keywords'>
+    <meta content='width=device-width,initial-scale=1' name='viewport'>
+    <link href='img/favicon.png' rel='icon' type='image/png'>
+    <link href='favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='img/favicon57.png' rel='apple-touch-icon' sizes='57x57'>
+    <link href='img/favicon152.png' rel='apple-touch-icon' sizes='152x152'>
+    <link href="stylesheets/fonts.css" rel="stylesheet" />
+    <link href="stylesheets/site.css" rel="stylesheet" />
+    <link href="stylesheets/animate.css" rel="stylesheet" />
+    <!-- = stylesheet_link_tag "http://overpass-30e2.kxcdn.com/overpass.css" -->
+  </head>
+  <body id='page-top'>
+    <nav class='navbar navbar-default navbar-fixed-top' id='mainNav'>
+      <div class='container-fluid'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+          <button class='navbar-toggle collapsed' data-target='#bs-example-navbar-collapse-1' data-toggle='collapse' type='button'>
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class="navbar-brand page-scroll" href="./">Flatpak</a>
+        </div>
+        <div class='collapse navbar-collapse' id='bs-example-navbar-collapse-1'>
+          <ul class='nav navbar-nav navbar-right'>
+            <li>
+              <a href='index.html#about'>About</a>
+            </li>
+            <li>
+              <a href='index.html#users'>Users</a>
+            </li>
+            <li>
+              <a href='index.html#developers'>Developers</a>
+            </li>
+            <li>
+              <a href='index.html#get-involved'>Get&nbsp;Involved</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="faq.html">FAQ</a>
+            </li>
+          </ul>
+          <!-- /.navbar-collapse -->
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </nav>
+  </body>
+  <section class="bg-dark"><div class="container"><div class="row"><div class="col-lg-10 col-lg-offset-1">
+  <h1>Bundling a Java Application with Flatpak</h1>
+  
+  <p>This tutorial will walk you through bundling a pre-built Java application using Flatpak. Many Java applications ship a pre-built tarball with the Java dependencies included, and this tutorial will step through an example of taking such a tarball and creating a Flatpak application from it.</p>
+  
+  <p>To complete this tutorial, it is necessary to have flatpak and flatpak-builder installed on your system. See <a href="getting.html">getting Flatpak</a> for details on installing Flatpak on your system.</p>
+  
+  <h2>Get the Application Tarball</h2>
+  
+  <p>The application that we are going to bundle with Flatpak is Sweethome3D -- an application that lets you map a plan of the interior of your house so you can design and then view your design plans in 3D. Sweethome3D ships a prebuilt tarball that contains all the Java dependencies it requires, as well as the pre-built binary.</p>
+  
+  <p>The first step is to download the Sweethome3D tarball, and extract it to your working directory:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>wget http://downloads.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-5.2/SweetHome3D-5.2-linux-x64.tgz&#x000A;<span class="unselectable">$ </span>tar xvf SweetHome3D-5.2-linux-x64.tgz</pre>
+  
+  <h2>Install the Flatpak Freedesktop SDK and runtime</h2>
+  
+  <p>Every Flatpak application is required to specify a runtime that provides the core dependencies when the application is run. A Flatpak SDK is used just by you, the developer when building and bundling the application. See the <a href="developer.html">Developer page</a> for further details on how the runtimes and SDKs work.</p>
+  
+  <p>For this example of bundling up Sweethome3D, we are going to use the Freedesktop SDK and runtime. The Freedesktop SDK and runtime are available in from the <a href="https://sdk.gnome.org/">GNOME SDK repository</a>. If you haven&#39;t previously set up this repository, you need to download the GPG key, then enable the repository:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;<span class="unselectable">$ </span>flatpak remote-add --gpg-import=gnome-sdk.gpg gnome https://sdk.gnome.org/repo/</pre>
+  
+  <p>You now have enabled a new Flatpak repo called <code>gnome</code>. Next, install version 1.4 of the Freedesktop SDK and runtime from your newly enabled gnome repository:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak install gnome org.freedesktop.Platform 1.4&#x000A;<span class="unselectable">$ </span>flatpak install gnome org.freedesktop.Sdk 1.4</pre>
+  
+  <h2>Create the Flatpak application</h2>
+  
+  <p>Next up, we are going to create the Flatpak application that we are going to bundle Sweethome3D into. Use the following command to create the Flatpak application with the unique name <code>com.sweethome3d.App</code>, using the Freedesktop runtime and SDK:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build-init sweethome3d-flatpak com.sweethome3d.App org.freedesktop.Sdk org.freedesktop.Platform 1.4</pre></p>
+  
+  <p>This creates a default empty Flatpak application called <code>com.sweethome3d.App</code> in a new the directory <code>sweethome3d-flatpak</code>.</p>
+  
+  <h2>Move the tarball contents into the Flatpak sandbox</h2>
+  
+  <p>The <code>flatpak build</code> command lets you run commands within your newly created Flatpak sandbox. First we use <code>flatpak build</code> to create a <code>bin/</code> and a <code>SweetHome3D/</code> directory in the <code>/app/</code> directory within the sweethome3d-flatpak sandbox:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak mkdir -p /app/SweetHome3D&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak mkdir -p /app/bin</pre>
+  
+  <p>At this point, we can also run <code>ls</code> inside the build sandbox to see the results of the above two commands:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak ls /app/</pre>
+  
+  <p>Next, move the contents of the tarball we extracted in the &#39;&#39;&#39;Get the Application Tarball&#39;&#39;&#39; step above into the <code>/app/Sweethome3D/</code> directory in the sandbox:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak cp -ra SweetHome3D-5.2/* /app/SweetHome3D</pre>
+  
+  <p>Finally, make a sybmolic link for the Sweethome3D binary in <code>/app/SweetHome3D/SweetHome3D</code> to the <code>/app/bin/</code> directory in the sandbox.</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak ln -s /app/SweetHome3D/SweetHome3D /app/bin</pre>
+  
+  <h2>Adding a Desktop entry, AppData, and an icon</h2>
+  
+  <p>One thing you will notice about Sweethome3D is that the application does not ship a Desktop file, AppData file or application icon in the tarball. Including a desktop file will make the application show up in the menus of a Linux desktop, so a user can launch the application directly from their desktop environment (rather than having to run a terminal command). AppData files provide extra information about an application that Desktop environments can use to populate software installers (e.g. gnome-software and apper).</p>
+  
+  <h3>creating and getting the files and icon</h3>
+  
+  <p>Create a new file in your working directory called <code>com.sweethome3d.App.desktop</code> and populate it with a simple desktop entry for Sweethome3D:
+  <pre>&#x000A;[Desktop Entry]&#x000A;Type=Application&#x000A;Encoding=UTF-8&#x000A;Name=SweetHome 3D&#x000A;Comment=Draw the plan of your home or office, test furniture layouts and view the results in 3D&#x000A;Exec=SweetHome3D&#x000A;Icon=com.sweethome3d.App.png&#x000A;Terminal=false</pre></p>
+  
+  <p>Next, create another new file called <code>com.sweethome3d.App.appdata.xml</code> in your working directory, and populate it with an AppData file for SweetHome3D:</p>
+  
+  <pre>&#x000A;&lt;?xml version="1.0" encoding="UTF-8"?&gt;&#x000A;&lt;!-- Copyright 2013 First Lastname &lt;your@email.com&gt; --&gt;&#x000A;&lt;component type="desktop"&gt;&#x000A; &lt;id&gt;com.sweethome3d.App.desktop&lt;/id&gt;&#x000A; &lt;metadata_license&gt;CC0-1.0&lt;/metadata_license&gt;&#x000A; &lt;project_license&gt;GPL-2.0&lt;/project_license&gt;&#x000A; &lt;name&gt;SweetHome 3D&lt;/name&gt;&#x000A; &lt;summary&gt;Draw the plan of your home or office, test furniture layouts and view the results in 3D&lt;/summary&gt;&#x000A; &lt;description&gt;&#x000A;  &lt;p&gt;&#x000A;   Use SweetHome 3D to map out a plan of your house and plan the layout&#x000A;   and colors of floors, walls and furniture.&#x000A;  &lt;/p&gt;&#x000A;  &lt;p&gt;Example list:&lt;/p&gt;&#x000A;  &lt;ul&gt;&#x000A;   &lt;li&gt;First item&lt;/li&gt;&#x000A;   &lt;li&gt;Second item&lt;/li&gt;&#x000A;  &lt;/ul&gt;&#x000A;  &lt;p&gt;&#x000A;  This is another paragraph of information about SweetHome 3D and the Many&#x000A;  things that you can use it for&#x000A;  &lt;/p&gt;&#x000A; &lt;/description&gt;&#x000A; &lt;screenshots&gt;&#x000A;  &lt;screenshot type="default"&gt;&#x000A;   &lt;image&gt;http://www.sweethome3d.com/images/gallery/SweetHome3DExample10-FlatWithMezzanine-VirtualVisit.jpg&lt;/image&gt;&#x000A;   &lt;caption&gt;The main window showing the application in action&lt;/caption&gt;&#x000A;  &lt;/screenshot&gt;&#x000A; &lt;/screenshots&gt;&#x000A; &lt;url type="homepage"&gt;http://http://www.sweethome3d.com/&lt;/url&gt;&#x000A;&lt;/component&gt;</pre>
+  
+  <p>The sweethome 3D tarball also does not ship with an icon included, so we need to download it from their upstream source control:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>wget http://sweethome3d.cvs.sourceforge.net/viewvc/sweethome3d/SweetHome3D/src/com/eteks/sweethome3d/viewcontroller/resources/help/images/applicationIcon.png</pre>
+  
+  <h3>Place them in the sandbox</h3>
+  
+  <p>Now you have the 3 files in your working directory, we can place them in the appropriate locations in the build sandbox.</p>
+  
+  <p>First, create the directory for the desktop file, and move the file from your working directory, to the build sandbox:</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak mkdir -p /app/share/applications/&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak cp com.sweethome3d.App.desktop /app/share/applications/</pre>
+  
+  <p>Then do the same for the icon, being sure to rename it to <code>com.sweethome3d.App.png</code>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak mkdir -p /app/share/icons/hicolor/128x128/apps/&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak cp applicationIcon.png /app/share/icons/hicolor/128x128/apps/com.sweethome3d.App.png</pre></p>
+  
+  <p>Create the <code>/app/share/appdata/</code> directory in the sandbox, and copy the appdata file over:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak mkdir -p /app/share/appdata/&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak cp com.sweethome3d.App.appdata.xml /app/share/appdata/</pre></p>
+  
+  <p>After adding the AppData file, use the following command to generate the Appstream files:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build sweethome3d-flatpak appstream-compose --prefix=/app --origin=flatpak --basename=com.sweethome3d.App  com.sweethome3d.App</pre></p>
+  
+  <p>This reads the desktop file, the icon and the appdata file and produces appstream files in <code>/app/share/app-info/</code>. Note that this step is done automatically if you are automating your build process with <a href="developer.html#Building_More_Complex_Apps_With_flatpak_builder">Flatpak-builder</a></p>
+  
+  <h2>Finalize the build</h2>
+  
+  <p>Next, we finalize the build of the Flatpak application. In this step, we tell Flatpak what the sandboxed application should have access to outside of the sandbox, and the name of the executable. In this Sweethome3D example, Sweethome3D needs access to the network, and to X11 (since it is a GUI application):</p>
+  
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build-finish sweethome3d-flatpak --persist=.java --share=ipc --socket=x11 --share=network --command=SweetHome3D</pre>
+  
+  <h2>Export the repo, and test out the application</h2>
+  
+  <p>Your SweetHome3D Flatpak application is now complete. The next step is to export it into a local repository so we can install it and try it out. First, export the Flatpak application with:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak build-export repo sweethome3d-flatpak</pre>
+  This creates a <code>repo/</code> directory that contains your new repo with the SweetHome3D application in it.</p>
+  
+  <p>Next, we need to add this to Flatpak as a &quot;remote&quot; repo, similar to what you did earlier for the SDK repo:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak --user remote-add --no-gpg-verify sweethome-repo repo</pre></p>
+  
+  <p>Finally install the application from the newly linked repo, and run it:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak --user install sweethome-repo com.sweethome3d.App&#x000A;<span class="unselectable">$ </span>flatpak run com.sweethome3d.App</pre></p>
+  
+  <p>Also check the Application menus on your desktop environment, an entry for SweetHome 3D should now be visible in the menus, using the icon for SweetHome too.</p>
+  
+  <h2>Automating this process with flatpak-builder</h2>
+  
+  <p>The above steps have walked you through generating a Flatpak application using a series of manual steps. If you need to automate this process, there the <a href="developer.html#Building_More_Complex_Apps_With_flatpak_builder">Flatpak-builder</a> tool that lets you specify all the details of your Flatpak application, and will download and build the application automatically.</p>
+  
+  <p>First, in a clean working directory from the steps above, create a new file called <code>com.sweethome3d.App.json</code> with the following contents:
+  <pre>&#x000A;{&#x000A;  &quot;app-id&quot;: &quot;com.sweethome3d.App&quot;,&#x000A;  &quot;runtime&quot;: &quot;org.freedesktop.Platform&quot;,&#x000A;  &quot;runtime-version&quot;: &quot;1.4&quot;,&#x000A;  &quot;sdk&quot;: &quot;org.freedesktop.Sdk&quot;,&#x000A;  &quot;command&quot;: &quot;SweetHome3D&quot;,&#x000A;  &quot;finish-args&quot;: [&#x000A;      &quot;--persist=.java&quot;,&#x000A;      &quot;--share=ipc&quot;, &quot;--socket=x11&quot;,&#x000A;      &quot;--share=network&quot;&#x000A;  ],&#x000A;  &quot;modules&quot;: [&#x000A;      {&#x000A;          &quot;name&quot;: &quot;sweethome&quot;,&#x000A;          &quot;no-autogen&quot;: true,&#x000A;          &quot;sources&quot; : [&#x000A;              {&#x000A;                  &quot;type&quot;: &quot;archive&quot;,&#x000A;                  &quot;url&quot;: &quot;http://downloads.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-5.2/SweetHome3D-5.2-linux-x64.tgz&quot;,&#x000A;                  &quot;sha256&quot;: &quot;c963afe9111e7b557cbdb99678926e5767c30928aa9565878f0d0b132151d69e&quot;&#x000A;              },&#x000A;              {&#x000A;                  &quot;type&quot;: &quot;file&quot;,&#x000A;                  &quot;path&quot;: &quot;sweethome-Makefile&quot;,&#x000A;                  &quot;dest-filename&quot;: &quot;Makefile&quot;&#x000A;              }&#x000A;          ]&#x000A;      }&#x000A;  ]&#x000A;}</pre></p>
+  
+  <p>You also need a simple Makefile to do the steps of placing the files in the tarball into the proper locations in the <code>/app/</code> directory in the sandbox. Create a new file called <code>sweethome-Makefile</code> and add the following contents:
+  <pre>&#x000A;all:&#x000A;      true&#x000A;install:&#x000A;      mkdir -p /app/SweetHome3D /app/bin&#x000A;      cp -ra * /app/SweetHome3D&#x000A;      ln -s /app/SweetHome3D/SweetHome3D /app/bin</pre></p>
+  
+  <p>Now, with these two files created, running the following command will download the tarball, extract it, move the files into the correct locations, finalize the build, and export the repo:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak-builder --repo=repo sweethome3d-flatpak com.sweethome3d.App.json&#x000A;<span class="unselectable">$ </span>flatpak run com.sweethome3d.App</pre></p>
+  
+  <p>Finally, enable a the new repo as we did before, then install and run the application:
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak --user remote-add --no-gpg-verify sweethome-repo2 repo&#x000A;<span class="unselectable">$ </span>flatpak --user install sweethome-repo2 com.sweethome3d.App&#x000A;<span class="unselectable">$ </span>flatpak run com.sweethome3d.App</pre></p>
+  </div></div></div></section>
+  <section class='bg-black' id='footer'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-lg-3 col-lg-offset-1'>
+          <a class='navbar-brand page-scroll' href='#page-top'>
+            <img title="Flatpak" class="full" src="img/logo.svg" />
+          </a>
+        </div>
+        <ul class='col-lg-7'>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#about'>About</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#users'>Users</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="getting.html">Downloading Flatpak</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#developers'>Developers</a>
+            <ul>
+              <li>
+                <a class="page-scroll" href="developer.html">Getting Started with Flatpack</a>
+              </li>
+            </ul>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class='page-scroll' href='index.html#get-involved'>Get&nbsp;Involved</a>
+          </li>
+          <li class='toplevel'>
+            <!-- id links on index page -->
+            <a class="page-scroll" href="faq.html">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/jquery.easing.min.js"></script>
+  <script src="javascripts/all.js"></script>
+  <script src="javascripts/bootstrap.js"></script>
+  <script src="javascripts/jquery.toc.min.js"></script>
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-68811788-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</html>

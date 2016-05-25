@@ -6638,6 +6638,8 @@ table {
         margin: 0;
         padding: 0; }
         #footer ul li ul li {
+          display: block;
+          width: 100%;
           text-transform: none;
           /* padding-left: 1em; */ }
           #footer ul li ul li a {

@@ -6622,29 +6622,43 @@ table {
     font-weight: bold;
     height: inherit; }
   #footer ul {
-    display: block; }
+    display: block;
+    -moz-column-count: 1;
+    /* just one column for small res */
+    -ms-column-count: 1;
+    /* just one column for small res */
+    -webkit-column-count: 1;
+    /* just one column for small res */
+    column-count: 1;
+    /* just one column for small res */ }
     #footer ul li {
       list-style: none;
       display: block;
-      font-size: 80%;
-      width: 50%;
-      float: left; }
+      font-size: 80%; }
       #footer ul li.toplevel {
         text-transform: uppercase;
         margin-bottom: 1em; }
       #footer ul li a {
         display: block; }
       #footer ul li ul {
+        -moz-column-count: 1;
+        -ms-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
         margin: 0;
         padding: 0; }
         #footer ul li ul li {
-          display: block;
-          width: 100%;
           text-transform: none;
           /* padding-left: 1em; */ }
           #footer ul li ul li a {
             color: #5e5e5e; }
 
+@media (min-width: 768px) {
+  #footer ul {
+    -moz-column-count: 2;
+    -ms-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2; } }
 .unselectable {
   -moz-user-select: none;
   -ms-user-select: none;

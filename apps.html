@@ -64,17 +64,17 @@
   
   <p>A collection of GNOME applications are available from the latest upstream release (version 3.20). These can be found in the gnome-apps repository, which can be added with:</p>
   
-  <pre><code>$ wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;$ flatpak remote-add --gpg-import=gnome-sdk.gpg gnome-apps https://sdk.gnome.org/repo-apps/&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>wget https://sdk.gnome.org/keys/gnome-sdk.gpg&#x000A;<span class="unselectable">$ </span>flatpak remote-add --gpg-import=gnome-sdk.gpg gnome-apps https://sdk.gnome.org/repo-apps/</pre>
   
   <p>You can then list available apps using:</p>
   
-  <pre><code>$ flatpak remote-ls gnome-apps --app&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak remote-ls gnome-apps --app</pre>
   
   <p>Applications in this repository require the 3.20 version of the org.gnome.Platform runtime: see the <a href="runtimes.html">runtimes page</a> for details on how to install it.</p>
   
   <p>Stable GNOME applictaions also use the version name of &quot;stable&quot;. To install one, you therefore run:</p>
   
-  <pre><code>$ flatpak install gnome-apps org.gnome.gedit stable&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak install gnome-apps org.gnome.gedit stable</pre>
   
   <h2>Nightly GNOME applications</h2>
   
@@ -85,42 +85,42 @@
   <li>Calculator</li>
   <li><a href="https://wiki.gnome.org/Apps/Calendar">Calendar</a></li>
   <li>Characters</li>
+  <li><a href="https://wiki.gnome.org/Apps/Clocks">Clocks</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Dictionary">Dictionary</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Documents">Documents</a></li>
-  <li><a href="https://wiki.gnome.org/Apps/Epiphany">Web</a> (Epiphany)</li>
   <li><a href="https://wiki.gnome.org/Apps/Evince">Evince</a></li>
+  <li><a href="https://wiki.gnome.org/Apps/EyeOfGnome">Eye of Gnome</a></li>
   <li>Games</li>
+  <li><a href="https://wiki.gnome.org/Apps/Gedit">Gedit</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Gitg">Gitg</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Glade">Glade</a></li>
+  <li><a href="https://wiki.gnome.org/Apps/Iagno">Iagno</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Maps">Maps</a></li>
   <li>News</li>
+  <li>Notes (Bijiben)</li>
   <li><a href="https://wiki.gnome.org/Apps/Polari">Polari</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Rhythmbox">Rhythmbox</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Todo">Todo</a></li>
   <li><a href="https://wiki.gnome.org/Apps/Totem">Videos</a> (Totem)</li>
+  <li><a href="https://wiki.gnome.org/Apps/Epiphany">Web</a> (Epiphany)</li>
   <li><a href="https://wiki.gnome.org/Apps/Weather">Weather</a></li>
-  <li>Notes (Bijiben)</li>
-  <li><a href="https://wiki.gnome.org/Apps/Clocks">Clocks</a></li>
-  <li><a href="https://wiki.gnome.org/Apps/EyeOfGnome">Eye of Gnome</a></li>
-  <li><a href="https://wiki.gnome.org/Apps/Gedit">Gedit</a></li>
-  <li><a href="https://wiki.gnome.org/Apps/Iagno">Iagno</a></li>
   </ul>
   
   <p>To add the GNOME nightly apps repository, run:</p>
   
-  <pre><code>$ flatpak remote-add --gpg-import=nightly.gpg gnome-nightly-apps https://sdk.gnome.org/nightly/repo-apps/&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak remote-add --gpg-import=nightly.gpg gnome-nightly-apps https://sdk.gnome.org/nightly/repo-apps/</pre>
   
   <p>And to list the apps in the repository:</p>
   
-  <pre><code>$ flatpak remote-ls gnome-nightly-apps --app&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak remote-ls gnome-nightly-apps --app</pre>
   
   <p>These applications require the nightly version of the org.gnome.Platform runtime: see the <a href="runtimes.html">runtimes page</a> for details on how to install this. All the apps in the repository use the version name of &quot;master&quot;. For example, to install gedit run:</p>
   
-  <pre><code>$ flatpak install gnome-nightly-apps org.gnome.gedit master&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>latpak install gnome-nightly-apps org.gnome.gedit master</pre>
   
   <p>And to update it:</p>
   
-  <pre><code>$ flatpak update org.gnome.gedit master&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak update org.gnome.gedit master</pre>
   
   <h2>Nightly graphics apps</h2>
   
@@ -136,15 +136,15 @@
   
   <p>These applications require the org.gnome.Platform 3.20 runtime: see the <a href="runtimes.html">runtimes page</a> for details on how to install this. To add the nightly-graphics repository, run:</p>
   
-  <pre><code>$ wget http://209.132.179.2/keys/nightly.gpg&#x000A;$ flatpak remote-add --user --gpg-import=nightly.gpg nightly-graphics http://209.132.179.2/repo/&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>wget http://209.132.179.2/keys/nightly.gpg&#x000A;<span class="unselectable">$ </span>flatpak remote-add --user --gpg-import=nightly.gpg nightly-graphics http://209.132.179.2/repo/</pre>
   
   <p>List the apps in the repository:</p>
   
-  <pre><code>$ flatpak remote-ls gnome-nightly-apps --app&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak remote-ls gnome-nightly-apps --app</pre>
   
   <p>The graphics apps use &quot;master&quot; as their version name, so to install one, run:</p>
   
-  <pre><code>$ flatpak update org.gimp.GimpDevel master&#x000A;</code></pre>
+  <pre>&#x000A;<span class="unselectable">$ </span>flatpak update org.gimp.GimpDevel master</pre>
   </div></div></div></section>
   <section class='bg-black' id='footer'>
     <div class='container'>

@@ -6344,8 +6344,8 @@ header {
   text-align: center;
   color: #fff;
   background-color: #4a90d9;
-  background-image: linear-gradient(to bottom, rgba(74, 144, 217, 0), rgba(74, 144, 217, 0.7), rgba(74, 144, 217, 0.7), rgba(74, 144, 217, 0)), url(../img/header_bottom-9568a1e2.png), url(../img/header-4d7e923c.png), linear-gradient(to bottom, #929292, #4a90d9);
-  background-position: center, center bottom, center top, center;
+  background-image: linear-gradient(to bottom, rgba(74, 144, 217, 0), rgba(74, 144, 217, 0.7), rgba(74, 144, 217, 0.7), rgba(74, 144, 217, 0)), url(../img/header-4d7e923c.png), linear-gradient(to bottom, #929292, #4a90d9);
+  background-position: center, center top, center;
   background-repeat: no-repeat; }
 
 header .header-content {
